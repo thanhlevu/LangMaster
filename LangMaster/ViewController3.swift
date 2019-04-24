@@ -8,23 +8,43 @@
 
 import UIKit
 
-class ViewController3: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return langLogo.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "langCell", for: indexPath) as! LangCollectionViewCell
+        cell.langLogoImageView.image = UIImage(named: langLogo[indexPath.item].logo)
+        cell.langLogoImageView.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        cell.layer.cornerRadius = 10 //set corner radius here
+        cell.layer.borderColor = UIColor.red.cgColor  // set cell border color here
+        cell.layer.borderWidth = 2 // set border width here
+        return cell
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBOutlet var langCollectionView: UICollectionView!
+    var langLogo: [LangLogo] = []
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getJSONData()
     }
-    */
-
+    
+    func getJSONData(){
+        guard let jsonDataURL = URL(string: "https://thanhlevu.github.io/langcourses.json") else {return}   // JSON data API
+        URLSession.shared.dataTask(with: jsonDataURL) {(data, response, error) in
+            do {
+                let database = try JSONDecoder().decode(Database.self, from: data!)
+                print(database.languages)
+                self.langLogo = database.languages
+                DispatchQueue.main.async {
+                    self.langCollectionView.reloadData()
+                }
+            }
+            catch {
+                print(error)
+            }
+            }.resume()
+    }
 }
