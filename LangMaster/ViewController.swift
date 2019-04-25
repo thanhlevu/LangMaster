@@ -38,7 +38,7 @@ struct Database: Codable {
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    var courseDatabase = CourseLevels.self
+   // var courseDatabase = CourseLevels() = {}
     var basicCourseArr = [Courses]()
     var advancedCourseArr = [Courses]()
     var frameworkCourseArr = [Courses]()
@@ -91,9 +91,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.reloadData()
         } else {
             isSearching = true
-            searchBasicCourseArr = basicCourseArr.filter { $0.title.contains((searchBar.text!.lowercased())) || $0.no.contains((searchBar.text!.lowercased())) }
-            searchAdvancedCourseArr = advancedCourseArr.filter { $0.title.contains((searchBar.text!.lowercased())) || $0.no.contains((searchBar.text!.lowercased())) }
-            searchFrameWorkCourseArr = frameworkCourseArr.filter { $0.title.contains((searchBar.text!.lowercased())) || $0.no.contains((searchBar.text!.lowercased())) }
+            searchBasicCourseArr = basicCourseArr.filter { $0.title.lowercased().contains((searchBar.text!.lowercased())) || $0.no.lowercased().contains((searchBar.text!.lowercased())) || $0.name.lowercased().contains((searchBar.text!.lowercased())) }
+            searchAdvancedCourseArr = advancedCourseArr.filter { $0.title.lowercased().contains((searchBar.text!.lowercased())) || $0.no.lowercased().contains((searchBar.text!.lowercased())) || $0.name.lowercased().contains((searchBar.text!.lowercased())) }
+            searchFrameWorkCourseArr = frameworkCourseArr.filter { $0.title.lowercased().contains((searchBar.text!.lowercased())) || $0.no.lowercased().contains((searchBar.text!.lowercased())) || $0.name.lowercased().contains((searchBar.text!.lowercased())) }
             self.tableView.reloadData()
         }
     }
@@ -106,12 +106,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchBar.endEditing(true)
     }
     
-    
+
+    var courseDatabase:Database!
     func getJSONData(){
         guard let jsonDataURL = URL(string: "http://bit.ly/2XDl5T8") else {return}   // JSON data API
         URLSession.shared.dataTask(with: jsonDataURL) {(data, response, error) in
             do {
                 let database = try JSONDecoder().decode(Database.self, from: data!)
+                self.courseDatabase = database
                 self.basicCourseArr = database.courseLevels.basicCourses
                 self.advancedCourseArr = database.courseLevels.advancedCourses
                 self.frameworkCourseArr = database.courseLevels.frameworkCourses
@@ -126,6 +128,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            if isSearching && searchBasicCourseArr.count == 0 {
+                return searchBasicCourseArr.count
+            } else {
+                return 1
+            }
+        case 1:
+            if isSearching && searchAdvancedCourseArr.count == 0 {
+                return searchAdvancedCourseArr.count
+            } else {
+                return 1
+            }
+        default:
+            if isSearching && searchFrameWorkCourseArr.count == 0 {
+                return searchFrameWorkCourseArr.count
+            } else {
+                return 1
+            }
+        }
         return 1
     }
     
@@ -268,6 +290,28 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let courseBriefView = storyBoard.instantiateViewController(withIdentifier: "CourseBrief") as! CourseBriefViewController
+        let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
+        courseBriefView.titleBrief = cell.titleLable.text ?? ""      // get value from cell
+        if collectionView.tag == 0 {
+            courseBriefView.titleBrief = courseDatabase.courseLevels.basicCourses[indexPath.row].title
+            courseBriefView.subTitleBrief = courseDatabase.courseLevels.basicCourses[indexPath.row].subtitle
+            courseBriefView.linkToImageBrief = courseDatabase.courseLevels.basicCourses[indexPath.row].linkToImage
+        } else if collectionView.tag == 0 {
+            courseBriefView.titleBrief = courseDatabase.courseLevels.advancedCourses[indexPath.row].title
+            courseBriefView.subTitleBrief = courseDatabase.courseLevels.advancedCourses[indexPath.row].subtitle
+            courseBriefView.linkToImageBrief = courseDatabase.courseLevels.advancedCourses[indexPath.row].linkToImage
+        } else {
+            courseBriefView.titleBrief = courseDatabase.courseLevels.frameworkCourses[indexPath.row].title
+            courseBriefView.subTitleBrief = courseDatabase.courseLevels.frameworkCourses[indexPath.row].subtitle
+            courseBriefView.linkToImageBrief = courseDatabase.courseLevels.frameworkCourses[indexPath.row].linkToImage
+        }
+
+        self.navigationController?.pushViewController(courseBriefView, animated: true)
     }
     
 }
