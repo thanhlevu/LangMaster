@@ -50,17 +50,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getJSONData()
-        searchBar.barTintColor = UIColor.clear
-        searchBar.backgroundColor = UIColor.clear
-        searchBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        searchBar.isTranslucent = true
-        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        UITabBar.appearance().barTintColor = UIColor.orange // your color
-        UITabBar.appearance().tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) // your color
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        self.tabBarController?.tabBar.items?[1].badgeValue = "5"
+        self.hideKeyboardWhenTappedAround()          // hide the keyboard when tapping around
+        self.tabBarController?.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.7422073287, green: 0.4305739439, blue: 0.009549473904, alpha: 1)
+        getJSONData()
+//        searchBar.barTintColor = UIColor.clear
+//        searchBar.backgroundColor = UIColor.clear
+        searchBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+//        searchBar.isTranslucent = true
+//        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+//        UITabBar.appearance().barTintColor = UIColor.orange                 // not working if using navigation bar
+//        UITabBar.appearance().tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)          // not working if using navigation bar
+        self.tabBarController?.tabBar.tintColor = UIColor.white
+        self.tabBarController?.tabBar.barTintColor = UIColor.orange
+       //UINavigationBar.appearance().barTintColor = UIColor.green
+    }
+
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
@@ -74,6 +97,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.tableView.reloadData()
         }
     }
+    
+    //hide the Keyboard when scrolling or clicking on Search Button
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
     
     func getJSONData(){
         guard let jsonDataURL = URL(string: "http://bit.ly/2XDl5T8") else {return}   // JSON data API
@@ -231,8 +263,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             }
 
         }
-        
-        
         return cell
     }
     
@@ -240,4 +270,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return 1
     }
     
+}
+
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+
 }
