@@ -26,11 +26,13 @@ class CourseBriefViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        UINavigationBar.appearance().tintColor = UIColor.white
+        self.title = courseBrief?.name.capitalized
+        
         super.viewDidLoad()
         titleLabel.text = courseBrief?.title ?? ""
         subTitleLabel.text = courseBrief?.subtitle ?? ""
         
-        //        UIApplication.shared.statusBarView?.tintColor = .black
         let url = NSURL(string: courseBrief?.linkToImage ?? "")
         if let data = NSData(contentsOf: url! as URL) {
             //imageView.contentMode = UIView.ContentMode.scaleAspectFit   // get the image origin size
