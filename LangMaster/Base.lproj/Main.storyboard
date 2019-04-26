@@ -139,7 +139,6 @@
                                                                 <outlet property="priceLable" destination="7JA-Yo-mSU" id="3iT-OE-ego"/>
                                                                 <outlet property="ratingView" destination="BbW-V3-CcR" id="CZt-DU-3aE"/>
                                                                 <outlet property="titleLable" destination="cg5-XG-Nbj" id="1V1-BP-a2z"/>
-                                                                <segue destination="x5l-fK-cB9" kind="show" id="dLL-Ub-cHK"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -183,11 +182,12 @@
                     <connections>
                         <outlet property="searchBar" destination="8vp-UR-b4C" id="o9O-4u-Eq5"/>
                         <outlet property="tableView" destination="bf8-tj-nXg" id="Io9-Oh-uHz"/>
+                        <segue destination="x5l-fK-cB9" kind="show" identifier="homeToBriefV" id="BZ7-99-tx8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="480.80000000000001" y="197.45127436281859"/>
+            <point key="canvasLocation" x="460" y="198"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="6aC-Mo-APO">
@@ -231,24 +231,34 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tfu-MT-I74">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfu-MT-I74">
                                                 <rect key="frame" x="8" y="149" width="359" height="128"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="wVj-Vs-UK3"/>
-                                                </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-7f-Efy">
+                                                <rect key="frame" x="0.0" y="970" width="375" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="1e6-yc-he5"/>
+                                                </constraints>
+                                                <state key="normal" title="Visit Us"/>
+                                                <connections>
+                                                    <action selector="goToWebPage:" destination="x5l-fK-cB9" eventType="touchUpInside" id="325-Zu-IFp"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="EdB-b8-Bwv" firstAttribute="top" secondItem="TnT-M3-Df8" secondAttribute="topMargin" constant="56" id="1aE-kx-Tbc"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="EdB-b8-Bwv" secondAttribute="trailing" constant="8" id="A9X-NG-LPh"/>
                                             <constraint firstAttribute="trailing" secondItem="Tfu-MT-I74" secondAttribute="trailing" constant="8" id="GFT-lv-P8T"/>
+                                            <constraint firstAttribute="trailing" secondItem="AeJ-7f-Efy" secondAttribute="trailing" id="K4l-oy-6XZ"/>
                                             <constraint firstItem="kvl-be-G6c" firstAttribute="top" secondItem="EdB-b8-Bwv" secondAttribute="bottom" id="L4a-Xq-wqw"/>
                                             <constraint firstItem="Tfu-MT-I74" firstAttribute="leading" secondItem="TnT-M3-Df8" secondAttribute="leading" constant="8" id="RnC-Je-bGc"/>
                                             <constraint firstItem="Tfu-MT-I74" firstAttribute="top" secondItem="kvl-be-G6c" secondAttribute="bottom" constant="44" id="Sez-8s-APn"/>
+                                            <constraint firstItem="AeJ-7f-Efy" firstAttribute="leading" secondItem="TnT-M3-Df8" secondAttribute="leading" id="Vho-pW-zHJ"/>
                                             <constraint firstItem="EdB-b8-Bwv" firstAttribute="leading" secondItem="TnT-M3-Df8" secondAttribute="leadingMargin" constant="8" id="aWM-6i-7Ix"/>
                                             <constraint firstAttribute="height" constant="1000" id="g2H-Gu-tbw"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="kvl-be-G6c" secondAttribute="trailing" constant="8" id="jyA-Kd-iXN"/>
+                                            <constraint firstAttribute="bottom" secondItem="AeJ-7f-Efy" secondAttribute="bottom" id="lXZ-6o-nSq"/>
                                             <constraint firstItem="kvl-be-G6c" firstAttribute="leading" secondItem="TnT-M3-Df8" secondAttribute="leadingMargin" constant="8" id="v19-S8-Qdw"/>
                                         </constraints>
                                     </view>
@@ -271,8 +281,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tvj-tp-6PJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gMB-is-hPf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hf0-aL-bfh"/>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="imageView" destination="Tfu-MT-I74" id="VWs-Qd-Ofu"/>
                         <outlet property="subTitleLabel" destination="kvl-be-G6c" id="U4V-HJ-ubH"/>
                         <outlet property="titleLabel" destination="EdB-b8-Bwv" id="h97-sa-CGx"/>
                     </connections>
@@ -375,10 +389,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="4AV-by-DSD">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wBG-7y-HwC"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0hL-f6-ZSU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwT-1C-K47" userLabel="First Responder" sceneMemberID="firstResponder"/>

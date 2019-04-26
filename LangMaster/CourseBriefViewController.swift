@@ -10,46 +10,36 @@ import UIKit
 
 class CourseBriefViewController: UIViewController {
 
+    var courseBrief: Courses?
     var titleBrief:String = ""
     var subTitleBrief:String = ""
     var linkToImageBrief:String = "https://www.udemy.com/staticx/udemy/images/v6/logo-coral.svg"
+    @IBOutlet var imageView: UIImageView!
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
-    @IBOutlet var imageView: UIImageView!
+
+    
+    @IBAction func goToWebPage(_ sender: Any) {
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let url = NSURL(string: linkToImageBrief)
-//        if let data = NSData(contentsOf: url! as URL) {
-//            imageView.contentMode = UIView.ContentMode.scaleAspectFit
-//            imageView.image = UIImage(data: data as Data)
-//        }
-        titleLabel.text = titleBrief
-        subTitleLabel.text = subTitleBrief
-        if let imageURL = URL(string: "https://www.udemy.com/staticx/udemy/images/v6/logo-coral.svg") {
-            let data = try? Data(contentsOf: imageURL)
-            if let data = data {
-                let image = UIImage(data: data)
-                DispatchQueue.main.async {
-                    self.imageView?.image = image
-                    self.reloadInputViews()
-                }
-            }
+        titleLabel.text = courseBrief?.title ?? ""
+        subTitleLabel.text = courseBrief?.subtitle ?? ""
+        
+        //        UIApplication.shared.statusBarView?.tintColor = .black
+        let url = NSURL(string: courseBrief?.linkToImage ?? "")
+        if let data = NSData(contentsOf: url! as URL) {
+            //imageView.contentMode = UIView.ContentMode.scaleAspectFit   // get the image origin size
+            imageView.contentMode = UIView.ContentMode.scaleAspectFill
+            imageView.image = UIImage(data: data as Data)
         }
-
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+

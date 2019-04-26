@@ -51,6 +51,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     
+    var selectedCourse:Courses!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -148,7 +150,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return 1
             }
         }
-        return 1
+       // return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -293,27 +295,23 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let courseBriefView = storyBoard.instantiateViewController(withIdentifier: "CourseBrief") as! CourseBriefViewController
-        let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
-        courseBriefView.titleBrief = cell.titleLable.text ?? ""      // get value from cell
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print(collectionView.tag)
         if collectionView.tag == 0 {
-            courseBriefView.titleBrief = courseDatabase.courseLevels.basicCourses[indexPath.row].title
-            courseBriefView.subTitleBrief = courseDatabase.courseLevels.basicCourses[indexPath.row].subtitle
-            courseBriefView.linkToImageBrief = courseDatabase.courseLevels.basicCourses[indexPath.row].linkToImage
-        } else if collectionView.tag == 0 {
-            courseBriefView.titleBrief = courseDatabase.courseLevels.advancedCourses[indexPath.row].title
-            courseBriefView.subTitleBrief = courseDatabase.courseLevels.advancedCourses[indexPath.row].subtitle
-            courseBriefView.linkToImageBrief = courseDatabase.courseLevels.advancedCourses[indexPath.row].linkToImage
+            selectedCourse = courseDatabase.courseLevels.basicCourses[indexPath.item]
+        } else if collectionView.tag == 1 {
+            selectedCourse = courseDatabase.courseLevels.advancedCourses[indexPath.item]
         } else {
-            courseBriefView.titleBrief = courseDatabase.courseLevels.frameworkCourses[indexPath.row].title
-            courseBriefView.subTitleBrief = courseDatabase.courseLevels.frameworkCourses[indexPath.row].subtitle
-            courseBriefView.linkToImageBrief = courseDatabase.courseLevels.frameworkCourses[indexPath.row].linkToImage
+            selectedCourse = courseDatabase.courseLevels.frameworkCourses[indexPath.item]
         }
-
-        self.navigationController?.pushViewController(courseBriefView, animated: true)
+        performSegue(withIdentifier: "homeToBriefV", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let svc = segue.destination as? CourseBriefViewController
+        svc?.courseBrief = selectedCourse
+    }
 }
 
 
