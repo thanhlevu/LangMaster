@@ -7,25 +7,45 @@
 //
 
 import UIKit
+import UserNotifications
 
 class CourseBriefViewController: UIViewController {
 
     var courseBrief: Courses!
-//    var titleBrief:String = ""
-//    var subTitleBrief:String = ""
-//    var linkToImageBrief:String = "https://www.udemy.com/staticx/udemy/images/v6/logo-coral.svg"
-
-
+    
+    @IBOutlet var imageView: UIImageView!
     
 
-    @IBOutlet var imageView: UIImageView!
-    @objc func tapButton(){
-        print("added to bookmatks")
+    @IBAction func goToWeb(_ sender: Any) {
+        performSegue(withIdentifier: "BriefToWeb", sender: "")
     }
-
-    @IBAction func goToWebPage(_ sender: Any) {
-        print("Go To Web Page")
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let svc = segue.destination as? WebPageViewController
+        svc?.courseBrief = courseBrief
     }
+    
+    @objc func tapBookMarkButton(){
+        //Set up a notification
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = courseBrief.title
+        content.subtitle = courseBrief.subtitle
+        content.body = "Added this course into your bookmarks"
+        content.sound = UNNotificationSound.default
+        content.threadIdentifier = "thread"
+        let date = Date(timeIntervalSinceNow: 1)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: "content", content: content, trigger: trigger)
+        center.add(request) {(error) in
+            if error != nil {
+                print(error!)
+            }
+        }
+    }
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var starLable: UILabel!
@@ -67,7 +87,7 @@ class CourseBriefViewController: UIViewController {
         UIFont.boldSystemFont(ofSize: 16.0)
         
         //create add Button on Navigation Bar
-        let bookmarkButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(tapButton))
+        let bookmarkButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(tapBookMarkButton))
         self.navigationItem.rightBarButtonItem = bookmarkButton
         
 

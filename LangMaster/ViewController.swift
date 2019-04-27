@@ -127,7 +127,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             do {
                 
                 let database = try JSONDecoder().decode(Database.self, from: data!)
-                print(database.courseLevels.basicCourses)
                 self.courseDatabase = database
                 self.basicCourseArr = database.courseLevels.basicCourses
                 self.advancedCourseArr = database.courseLevels.advancedCourses
@@ -308,7 +307,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print(collectionView.tag)
         if collectionView.tag == 0 {
             selectedCourse = courseDatabase.courseLevels.basicCourses[indexPath.item]
         } else if collectionView.tag == 1 {

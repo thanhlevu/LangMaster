@@ -219,7 +219,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="More Detail"/>
                                                 <connections>
-                                                    <action selector="goToWebPage:" destination="nIk-UY-0aC" eventType="touchUpInside" id="UFa-yG-pOb"/>
+                                                    <action selector="goToWeb:" destination="nIk-UY-0aC" eventType="touchUpInside" id="Gn0-hh-fOd"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA1-LR-H2q">
@@ -418,11 +418,46 @@ Memory Leaks</string>
                         <outlet property="starLable" destination="5ZK-xa-ZgX" id="Vbg-WC-Y7e"/>
                         <outlet property="subtitleLabel" destination="RzX-QV-DRL" id="PF9-eD-2Wk"/>
                         <outlet property="titleLabel" destination="JA1-LR-H2q" id="hhf-eU-9CP"/>
+                        <segue destination="fKL-bb-FMJ" kind="show" identifier="BriefToWeb" id="VxC-jX-l5U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKM-mH-Dxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="1215"/>
+            <point key="canvasLocation" x="-90" y="1400"/>
+        </scene>
+        <!--Web Page View Controller-->
+        <scene sceneID="p2r-lY-kag">
+            <objects>
+                <viewController id="fKL-bb-FMJ" customClass="WebPageViewController" customModule="LangMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tag-0i-ZAD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bps-Vh-BOI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="plv-g2-Fx9" firstAttribute="bottom" secondItem="Bps-Vh-BOI" secondAttribute="bottom" id="PCg-iS-SvQ"/>
+                            <constraint firstItem="plv-g2-Fx9" firstAttribute="trailing" secondItem="Bps-Vh-BOI" secondAttribute="trailing" id="Rck-hK-ex6"/>
+                            <constraint firstItem="Bps-Vh-BOI" firstAttribute="leading" secondItem="plv-g2-Fx9" secondAttribute="leading" id="VhU-28-uKM"/>
+                            <constraint firstItem="Bps-Vh-BOI" firstAttribute="top" secondItem="plv-g2-Fx9" secondAttribute="top" id="snp-ji-4uz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="plv-g2-Fx9"/>
+                    </view>
+                    <connections>
+                        <outlet property="web" destination="Bps-Vh-BOI" id="To6-2k-ASI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kxf-Jv-Dcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897" y="1160"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="6aC-Mo-APO">

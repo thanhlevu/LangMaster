@@ -28,7 +28,7 @@
 		0A7EF3C7226F93F2009FA453 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3C6226F93F2009FA453 /* ViewController3.swift */; };
 		0A7EF3C9226FA1F8009FA453 /* LangCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3C8226FA1F8009FA453 /* LangCollectionViewCell.swift */; };
 		0A7EF3CB22713AFD009FA453 /* CourseBriefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3CA22713AFD009FA453 /* CourseBriefViewController.swift */; };
-		0A7EF3CE2271869A009FA453 /* CourseWebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3CD2271869A009FA453 /* CourseWebPageViewController.swift */; };
+		0A7EF3D02274BC22009FA453 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3CF2274BC22009FA453 /* WebPageViewController.swift */; };
 		0AC4D221226989BF0033308F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D220226989BF0033308F /* AppDelegate.swift */; };
 		0AC4D223226989BF0033308F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D222226989BF0033308F /* ViewController.swift */; };
 		0AC4D226226989BF0033308F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4D224226989BF0033308F /* Main.storyboard */; };
@@ -79,7 +79,7 @@
 		0A7EF3C6226F93F2009FA453 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		0A7EF3C8226FA1F8009FA453 /* LangCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A7EF3CA22713AFD009FA453 /* CourseBriefViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseBriefViewController.swift; sourceTree = "<group>"; };
-		0A7EF3CD2271869A009FA453 /* CourseWebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseWebPageViewController.swift; sourceTree = "<group>"; };
+		0A7EF3CF2274BC22009FA453 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		0AC4D21D226989BF0033308F /* LangMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LangMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC4D220226989BF0033308F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC4D222226989BF0033308F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				0A7EF381226B1B80009FA453 /* CourseLevelTableViewCell.swift */,
 				0A7EF3C8226FA1F8009FA453 /* LangCollectionViewCell.swift */,
 				0A7EF3CA22713AFD009FA453 /* CourseBriefViewController.swift */,
-				0A7EF3CD2271869A009FA453 /* CourseWebPageViewController.swift */,
+				0A7EF3CF2274BC22009FA453 /* WebPageViewController.swift */,
 			);
 			path = LangMaster;
 			sourceTree = "<group>";
@@ -341,6 +341,7 @@
 				0A7EF36D226B0AE7009FA453 /* CosmosText.swift in Sources */,
 				0A7EF36C226B0AE7009FA453 /* CosmosAccessibility.swift in Sources */,
 				0AC4D223226989BF0033308F /* ViewController.swift in Sources */,
+				0A7EF3D02274BC22009FA453 /* WebPageViewController.swift in Sources */,
 				0AC4D229226989BF0033308F /* LangMaster.xcdatamodeld in Sources */,
 				0A7EF376226B0AE7009FA453 /* CosmosRating.swift in Sources */,
 				0A7EF373226B0AE7009FA453 /* CosmosLocalizedRating.swift in Sources */,
@@ -354,7 +355,6 @@
 				0A7EF384226B3053009FA453 /* ViewController2.swift in Sources */,
 				0A7EF36B226B0AE7009FA453 /* StarLayer.swift in Sources */,
 				0A7EF3CB22713AFD009FA453 /* CourseBriefViewController.swift in Sources */,
-				0A7EF3CE2271869A009FA453 /* CourseWebPageViewController.swift in Sources */,
 				0A7EF372226B0AE7009FA453 /* CosmosLayers.swift in Sources */,
 				0A7EF371226B0AE7009FA453 /* RightToLeft.swift in Sources */,
 				0A7EF375226B0AE7009FA453 /* CosmosTouch.swift in Sources */,
