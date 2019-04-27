@@ -6,6 +6,7 @@
 //  Copyright © 2019 Thath. All rights reserved.
 //
 
+
 import UIKit
 
 struct Courses: Codable {
@@ -21,12 +22,12 @@ struct Courses: Codable {
     let ratings: String
     let price: String
     let originPrice: String
-    let whatToLearn: String?
-    let description: String?
-    let studentN: String?
-    let author: String?
-    let studyHours: String?
-    let updateTime:String?
+    let whatToLearn: String
+    let description: String
+    let studentN: String
+    let author: String
+    let studyHours: String
+    let updateTime:String
 }
 struct CourseLevels: Codable {
     let basicCourses: [Courses]
@@ -228,7 +229,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                         cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
                         cell.imageView.image = UIImage(data: data as Data)
                         cell.titleLable.text = searchBasicCourseArr[indexPath.item].title
-                        cell.priceLable.text = "€ "+searchBasicCourseArr[indexPath.item].price
+                        cell.priceLable.text = " "+searchBasicCourseArr[indexPath.item].price
                         cell.ratingView.rating = Double(searchBasicCourseArr[indexPath.item].ratings) ?? 1.0
                         cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
                     }
