@@ -21,6 +21,12 @@ struct Courses: Codable {
     let ratings: String
     let price: String
     let originPrice: String
+    let whatToLearn: String?
+    let description: String?
+    let studentN: String?
+    let author: String?
+    let studyHours: String?
+    let updateTime:String?
 }
 struct CourseLevels: Codable {
     let basicCourses: [Courses]
@@ -111,10 +117,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var courseDatabase:Database!
     func getJSONData(){
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        let session = URLSession.init(configuration: config)
         guard let jsonDataURL = URL(string: "http://bit.ly/2XDl5T8") else {return}   // JSON data API
-        URLSession.shared.dataTask(with: jsonDataURL) {(data, response, error) in
+        session.dataTask(with: jsonDataURL) {(data, response, error) in
             do {
+                
                 let database = try JSONDecoder().decode(Database.self, from: data!)
+                print(database.courseLevels.basicCourses)
                 self.courseDatabase = database
                 self.basicCourseArr = database.courseLevels.basicCourses
                 self.advancedCourseArr = database.courseLevels.advancedCourses
@@ -285,7 +297,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                     }
                 }
             }
-
         }
         return cell
     }
