@@ -32,6 +32,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bf8-tj-nXg">
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="aDs-tx-Ank"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellY" rowHeight="200" id="Mv7-6g-R1C" customClass="CourseLevelTableViewCell" customModule="LangMaster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
@@ -40,34 +41,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zDM-t2-dYT">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zDM-t2-dYT">
                                                     <rect key="frame" x="15" y="11" width="345" height="178"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <viewLayoutGuide key="safeArea" id="2hT-5I-dou"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bnc-i8-n5x">
-                                                        <size key="itemSize" width="121" height="145"/>
+                                                        <size key="itemSize" width="117" height="145"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellX" id="7Qp-NI-QOi" customClass="CourseCollectionViewCell" customModule="LangMaster" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="16.5" width="121" height="145"/>
+                                                            <rect key="frame" x="0.0" y="16.5" width="117" height="145"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="121" height="145"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="117" height="145"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWm-a0-Rw9">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="121" height="64.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="64.5"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg5-XG-Nbj">
-                                                                        <rect key="frame" x="16" y="64.5" width="89" height="48.5"/>
+                                                                        <rect key="frame" x="16" y="64.5" width="85" height="48.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BbW-V3-CcR" customClass="CosmosView" customModule="LangMaster" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="113" width="121" height="16"/>
+                                                                        <rect key="frame" x="8" y="113" width="109" height="16"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -109,7 +111,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JA-Yo-mSU">
-                                                                        <rect key="frame" x="0.0" y="129" width="121" height="16"/>
+                                                                        <rect key="frame" x="8" y="129" width="101" height="15"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -125,15 +127,16 @@
                                                                 <constraint firstItem="cg5-XG-Nbj" firstAttribute="top" secondItem="bWm-a0-Rw9" secondAttribute="bottom" id="Rei-2G-teF"/>
                                                                 <constraint firstItem="7JA-Yo-mSU" firstAttribute="top" secondItem="BbW-V3-CcR" secondAttribute="bottom" id="TTP-zN-JRD"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="cg5-XG-Nbj" secondAttribute="trailing" id="XW2-HF-Rtc"/>
-                                                                <constraint firstItem="BbW-V3-CcR" firstAttribute="leading" secondItem="7Qp-NI-QOi" secondAttribute="leading" id="a37-yF-Tzx"/>
+                                                                <constraint firstItem="BbW-V3-CcR" firstAttribute="leading" secondItem="7Qp-NI-QOi" secondAttribute="leading" constant="8" id="a37-yF-Tzx"/>
                                                                 <constraint firstItem="cg5-XG-Nbj" firstAttribute="height" secondItem="7Qp-NI-QOi" secondAttribute="height" multiplier="1/3" id="cPO-7t-BgE"/>
-                                                                <constraint firstAttribute="bottom" secondItem="7JA-Yo-mSU" secondAttribute="bottom" id="gKL-BA-2mU"/>
+                                                                <constraint firstAttribute="bottom" secondItem="7JA-Yo-mSU" secondAttribute="bottom" constant="1" id="gKL-BA-2mU"/>
                                                                 <constraint firstItem="bWm-a0-Rw9" firstAttribute="top" secondItem="7Qp-NI-QOi" secondAttribute="top" id="lff-nJ-4YD"/>
                                                                 <constraint firstItem="cg5-XG-Nbj" firstAttribute="leading" secondItem="7Qp-NI-QOi" secondAttribute="leadingMargin" id="lkx-dN-OsN"/>
-                                                                <constraint firstItem="7JA-Yo-mSU" firstAttribute="leading" secondItem="7Qp-NI-QOi" secondAttribute="leading" id="n1c-dj-zM7"/>
+                                                                <constraint firstItem="7JA-Yo-mSU" firstAttribute="leading" secondItem="7Qp-NI-QOi" secondAttribute="leading" constant="8" id="n1c-dj-zM7"/>
                                                                 <constraint firstAttribute="trailing" secondItem="bWm-a0-Rw9" secondAttribute="trailing" id="szW-Cx-inv"/>
-                                                                <constraint firstAttribute="trailing" secondItem="7JA-Yo-mSU" secondAttribute="trailing" id="uTF-fG-PIg"/>
+                                                                <constraint firstAttribute="trailing" secondItem="7JA-Yo-mSU" secondAttribute="trailing" constant="8" id="uTF-fG-PIg"/>
                                                             </constraints>
+                                                            <size key="customSize" width="117" height="145"/>
                                                             <connections>
                                                                 <outlet property="imageView" destination="bWm-a0-Rw9" id="5SD-Fe-7Dt"/>
                                                                 <outlet property="priceLable" destination="7JA-Yo-mSU" id="3iT-OE-ego"/>
@@ -187,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="198"/>
+            <point key="canvasLocation" x="488.80000000000001" y="197.45127436281859"/>
         </scene>
         <!--Course Brief View Controller-->
         <scene sceneID="JMQ-nN-dee">
@@ -201,7 +204,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5f-MI-oe9">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1350"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XSB-Uv-3KT">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
@@ -210,7 +213,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTE-xf-qvn">
-                                                <rect key="frame" x="0.0" y="1252" width="375" height="48"/>
+                                                <rect key="frame" x="0.0" y="1302" width="375" height="48"/>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="ZdZ-jr-b6a"/>
@@ -369,7 +372,7 @@ Memory Leaks</string>
                                             <constraint firstItem="ffE-39-sTb" firstAttribute="top" secondItem="Z92-68-2M1" secondAttribute="bottom" constant="8" id="RkZ-AI-fKa"/>
                                             <constraint firstAttribute="trailing" secondItem="rTE-xf-qvn" secondAttribute="trailing" id="Ubh-bY-Dc3"/>
                                             <constraint firstAttribute="trailing" secondItem="JA1-LR-H2q" secondAttribute="trailing" constant="16" id="Vzi-hA-jHU"/>
-                                            <constraint firstAttribute="height" constant="1300" id="WdC-Qy-rGf"/>
+                                            <constraint firstAttribute="height" constant="1350" id="WdC-Qy-rGf"/>
                                             <constraint firstItem="XSB-Uv-3KT" firstAttribute="leading" secondItem="q5f-MI-oe9" secondAttribute="leading" id="Zmg-0O-bYK"/>
                                             <constraint firstItem="ffE-39-sTb" firstAttribute="leading" secondItem="q5f-MI-oe9" secondAttribute="leading" constant="16" id="elN-eG-JL8"/>
                                             <constraint firstAttribute="trailing" secondItem="XSB-Uv-3KT" secondAttribute="trailing" id="fOm-2x-f7e"/>
@@ -434,7 +437,7 @@ Memory Leaks</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bps-Vh-BOI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -466,14 +469,64 @@ Memory Leaks</string>
                     <view key="view" contentMode="scaleToFill" id="jMD-Fx-PbD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2qf-N4-xUz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bookmarkCell" rowHeight="155" id="6WJ-HE-9tc">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="155"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6WJ-HE-9tc" id="T0W-R5-11f" customClass="BookmarkTableViewCell" customModule="LangMaster" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GCb-tW-sVB" id="M2u-sp-ZUw"/>
+                                    <outlet property="delegate" destination="GCb-tW-sVB" id="Cpb-Dg-yDx"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Dk-cx-C99">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RI7-PY-6XJ"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Bookmarks" id="s3G-cy-UW0">
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="uQy-Iv-uxE">
+                                            <connections>
+                                                <action selector="editBookmarks:" destination="GCb-tW-sVB" id="LTY-Ya-8aI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2Dk-cx-C99" firstAttribute="top" secondItem="20u-ax-r2p" secondAttribute="top" id="N4f-KO-joF"/>
+                            <constraint firstItem="20u-ax-r2p" firstAttribute="trailing" secondItem="2qf-N4-xUz" secondAttribute="trailing" id="Zd8-MA-txx"/>
+                            <constraint firstItem="2qf-N4-xUz" firstAttribute="top" secondItem="2Dk-cx-C99" secondAttribute="bottom" id="Zlj-jL-q73"/>
+                            <constraint firstItem="2Dk-cx-C99" firstAttribute="trailing" secondItem="20u-ax-r2p" secondAttribute="trailing" id="dds-4X-vjS"/>
+                            <constraint firstItem="2qf-N4-xUz" firstAttribute="leading" secondItem="20u-ax-r2p" secondAttribute="leading" id="fVe-U2-soc"/>
+                            <constraint firstItem="2Dk-cx-C99" firstAttribute="leading" secondItem="20u-ax-r2p" secondAttribute="leading" id="hRF-mN-ndV"/>
+                            <constraint firstItem="20u-ax-r2p" firstAttribute="bottom" secondItem="2qf-N4-xUz" secondAttribute="bottom" id="tIb-vI-bAx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="20u-ax-r2p"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="EYl-gT-7Db"/>
+                    <connections>
+                        <outlet property="bookmarkTableView" destination="2qf-N4-xUz" id="L1K-lv-Niv"/>
+                        <outlet property="editButton" destination="uQy-Iv-uxE" id="edz-6c-vEc"/>
+                        <outlet property="navigationBar" destination="s3G-cy-UW0" id="SRe-Xl-Oo3"/>
+                        <segue destination="fKL-bb-FMJ" kind="show" identifier="bookmarkToWeb" id="aLv-OJ-09S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1E6-oR-ojR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="199"/>
+            <point key="canvasLocation" x="1453.5999999999999" y="198.35082458770617"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="c9b-nq-Kwo">
@@ -484,17 +537,17 @@ Memory Leaks</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="acI-A4-Gyu">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Uku-Bn-mVf">
                                     <size key="itemSize" width="120" height="120"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="langCell" id="wdR-k0-jlf" customClass="LangCollectionViewCell" customModule="LangMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <rect key="frame" x="0.0" y="20" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -522,18 +575,30 @@ Memory Leaks</string>
                                     <outlet property="delegate" destination="ae8-fb-zQz" id="0HR-bm-kWX"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3N-ie-4ZV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bbw-M8-Km5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="m3N-ie-4ZV" firstAttribute="leading" secondItem="Qsa-dz-RRJ" secondAttribute="leading" id="165-TV-Ssu"/>
                             <constraint firstItem="acI-A4-Gyu" firstAttribute="leading" secondItem="Qsa-dz-RRJ" secondAttribute="leading" id="Pu3-qa-Jks"/>
                             <constraint firstItem="Qsa-dz-RRJ" firstAttribute="trailing" secondItem="acI-A4-Gyu" secondAttribute="trailing" id="ZW9-Bh-sRl"/>
-                            <constraint firstItem="acI-A4-Gyu" firstAttribute="top" secondItem="Qsa-dz-RRJ" secondAttribute="top" id="iqQ-97-Ort"/>
+                            <constraint firstItem="Qsa-dz-RRJ" firstAttribute="trailing" secondItem="m3N-ie-4ZV" secondAttribute="trailing" id="cwd-La-UZR"/>
+                            <constraint firstItem="acI-A4-Gyu" firstAttribute="top" secondItem="m3N-ie-4ZV" secondAttribute="bottom" id="hUO-6C-qGo"/>
                             <constraint firstItem="Qsa-dz-RRJ" firstAttribute="bottom" secondItem="acI-A4-Gyu" secondAttribute="bottom" id="oAC-qZ-aeU"/>
+                            <constraint firstItem="m3N-ie-4ZV" firstAttribute="top" secondItem="Qsa-dz-RRJ" secondAttribute="top" id="za9-ez-ohB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qsa-dz-RRJ"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="QYz-QU-mpU"/>
                     <connections>
+                        <outlet property="headerLabel" destination="m3N-ie-4ZV" id="JZD-Mg-6oG"/>
                         <outlet property="langCollectionView" destination="acI-A4-Gyu" id="mEh-8U-g73"/>
                     </connections>
                 </viewController>
@@ -585,4 +650,7 @@ Memory Leaks</string>
         <image name="GoldStar" width="53" height="51"/>
         <image name="GoldStarEmpty" width="53" height="51"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="aLv-OJ-09S"/>
+    </inferredMetricsTieBreakers>
 </document>

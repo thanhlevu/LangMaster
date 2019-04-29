@@ -29,6 +29,8 @@
 		0A7EF3C9226FA1F8009FA453 /* LangCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3C8226FA1F8009FA453 /* LangCollectionViewCell.swift */; };
 		0A7EF3CB22713AFD009FA453 /* CourseBriefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3CA22713AFD009FA453 /* CourseBriefViewController.swift */; };
 		0A7EF3D02274BC22009FA453 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3CF2274BC22009FA453 /* WebPageViewController.swift */; };
+		0A7EF3D42275D620009FA453 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3D32275D620009FA453 /* User.m */; };
+		0A7EF3D62276DAB0009FA453 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3D52276DAB0009FA453 /* BookmarkTableViewCell.swift */; };
 		0AC4D221226989BF0033308F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D220226989BF0033308F /* AppDelegate.swift */; };
 		0AC4D223226989BF0033308F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D222226989BF0033308F /* ViewController.swift */; };
 		0AC4D226226989BF0033308F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4D224226989BF0033308F /* Main.storyboard */; };
@@ -80,6 +82,10 @@
 		0A7EF3C8226FA1F8009FA453 /* LangCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A7EF3CA22713AFD009FA453 /* CourseBriefViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseBriefViewController.swift; sourceTree = "<group>"; };
 		0A7EF3CF2274BC22009FA453 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
+		0A7EF3D12275D61F009FA453 /* LangMaster-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LangMaster-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A7EF3D22275D620009FA453 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		0A7EF3D32275D620009FA453 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		0A7EF3D52276DAB0009FA453 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		0AC4D21D226989BF0033308F /* LangMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LangMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC4D220226989BF0033308F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC4D222226989BF0033308F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +188,10 @@
 				0A7EF3C8226FA1F8009FA453 /* LangCollectionViewCell.swift */,
 				0A7EF3CA22713AFD009FA453 /* CourseBriefViewController.swift */,
 				0A7EF3CF2274BC22009FA453 /* WebPageViewController.swift */,
+				0A7EF3D22275D620009FA453 /* User.h */,
+				0A7EF3D32275D620009FA453 /* User.m */,
+				0A7EF3D12275D61F009FA453 /* LangMaster-Bridging-Header.h */,
+				0A7EF3D52276DAB0009FA453 /* BookmarkTableViewCell.swift */,
 			);
 			path = LangMaster;
 			sourceTree = "<group>";
@@ -272,6 +282,7 @@
 				TargetAttributes = {
 					0AC4D21C226989BF0033308F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					0AC4D233226989C00033308F = {
 						CreatedOnToolsVersion = 10.1;
@@ -335,7 +346,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7EF3D42275D620009FA453 /* User.m in Sources */,
 				0A7EF3C7226F93F2009FA453 /* ViewController3.swift in Sources */,
+				0A7EF3D62276DAB0009FA453 /* BookmarkTableViewCell.swift in Sources */,
 				0A7EF370226B0AE7009FA453 /* CosmosSize.swift in Sources */,
 				0A7EF36E226B0AE7009FA453 /* CosmosDefaultSettings.swift in Sources */,
 				0A7EF36D226B0AE7009FA453 /* CosmosText.swift in Sources */,
@@ -534,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6YAB4XU7S;
 				INFOPLIST_FILE = LangMaster/Info.plist;
@@ -543,6 +557,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = thanh.LangMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LangMaster/LangMaster-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -552,6 +568,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6YAB4XU7S;
 				INFOPLIST_FILE = LangMaster/Info.plist;
@@ -561,6 +578,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = thanh.LangMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LangMaster/LangMaster-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

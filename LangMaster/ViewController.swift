@@ -43,8 +43,12 @@ struct Database: Codable {
     let languages: [LangLogo]
 }
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate  {
     
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
+    var screenHeight: CGFloat!
+
    // var courseDatabase = CourseLevels() = {}
     var basicCourseArr = [Courses]()
     var advancedCourseArr = [Courses]()
@@ -62,8 +66,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Hide the Navigation Bar
+        let userC = User();
+        userC.setBookmarkArray([1])
+        userC.setBookmarkArray(userC.bookmarkArray()+[2])
+        print(userC.bookmarkArray())
+
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -90,7 +98,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        UITabBar.appearance().tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)          // not working if using navigation bar
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.orange
-       //UINavigationBar.appearance().barTintColor = UIColor.green
+    
     }
 
     
@@ -173,6 +181,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellY", for: indexPath) as? CourseLevelTableViewCell else {return UITableViewCell()}
         cell.collectionViewOutlet.tag = indexPath.section ///
         cell.reloadData()
+        
         return cell
     }
     
@@ -219,6 +228,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellX", for: indexPath) as! CourseCollectionViewCell
         if isSearching {
             if collectionView.tag == 0 {
@@ -228,7 +238,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                         cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
                         cell.imageView.image = UIImage(data: data as Data)
                         cell.titleLable.text = searchBasicCourseArr[indexPath.item].title
-                        cell.priceLable.text = " "+searchBasicCourseArr[indexPath.item].price
+                        cell.priceLable.text = "€ "+searchBasicCourseArr[indexPath.item].price
                         cell.ratingView.rating = Double(searchBasicCourseArr[indexPath.item].ratings) ?? 1.0
                         cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
                     }
@@ -298,6 +308,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                 }
             }
         }
+        
         return cell
     }
     
@@ -307,13 +318,24 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if collectionView.tag == 0 {
-            selectedCourse = courseDatabase.courseLevels.basicCourses[indexPath.item]
-        } else if collectionView.tag == 1 {
-            selectedCourse = courseDatabase.courseLevels.advancedCourses[indexPath.item]
+        if isSearching {
+            if collectionView.tag == 0 {
+                selectedCourse = searchBasicCourseArr[indexPath.item]
+            } else if collectionView.tag == 1 {
+                selectedCourse = searchAdvancedCourseArr[indexPath.item]
+            } else {
+                selectedCourse = searchFrameWorkCourseArr[indexPath.item]
+            }
         } else {
-            selectedCourse = courseDatabase.courseLevels.frameworkCourses[indexPath.item]
+            if collectionView.tag == 0 {
+                selectedCourse = courseDatabase.courseLevels.basicCourses[indexPath.item]
+            } else if collectionView.tag == 1 {
+                selectedCourse = courseDatabase.courseLevels.advancedCourses[indexPath.item]
+            } else {
+                selectedCourse = courseDatabase.courseLevels.frameworkCourses[indexPath.item]
+            }
         }
+
         performSegue(withIdentifier: "homeToBriefV", sender: self)
     }
     

@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet var headerLabel: UILabel!
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return langLogo.count
     }
@@ -46,8 +49,13 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = self.langCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets(top: 0,left: 10,bottom: 0,right: 10)
-        layout.minimumLineSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 0,right: 10)
+        //layout.minimumLineSpacing = 20
+        headerLabel.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        headerLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        headerLabel.text = "Language Portfolio"
+        headerLabel.textAlignment = .center
         //layout.itemSize = CGSize(width: (self.langCollectionView.frame.size.width - 20)/2, height: (self.langCollectionView.frame.size.height)/3)
         getJSONData()
     }
