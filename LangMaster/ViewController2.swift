@@ -41,13 +41,18 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(bookmarkCourseIdArray[indexPath.row])
         print(bookmarkCourses[indexPath.row])
+        
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = cellBackgroundColor(cellIndex: indexPath.row, numberOfElements: bookmarkCourses.count)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         performSegue(withIdentifier: "bookmarkToWeb", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
     {
-//        let svc = segue.destination as? WebPageViewController
-//        svc?.courseBrief = sender
+        let svc = segue.destination as? WebPageViewController
+        svc?.courseBrief = bookmarkCourses[0]
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -71,6 +76,18 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var bookmarkCourseIdArray = [1,2,3,4,5,6,7,8]
     var bookmarkCourses: [Courses] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide the Navigation Bar
+        let userC = User();
+        userC.setBookmarkArray([1])
+        userC.setBookmarkArray(userC.bookmarkArray()+[2])
+        print(userC.bookmarkArray())
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getJSONData()

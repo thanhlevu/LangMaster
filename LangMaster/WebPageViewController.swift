@@ -37,6 +37,7 @@ class WebPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let queue = DispatchQueue.global()
         queue.async {
             if self.courseBrief.linkToWeb != "" {
