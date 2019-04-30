@@ -348,7 +348,7 @@ Memory Leaks</string>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffE-39-sTb">
                                                 <rect key="frame" x="16" y="768" width="343" height="264"/>
-                                                <mutableString key="text">This course is unlike any JavaScript course you will find online. After many years of working with the language, Andrei has taken decades of experience, combining best practices from some of the top developers in the world, to get you to become one of the top performing Javascript developers. You will go from understanding the basics of JavaScript, to learning it to the point that you can teach it to others, impress coworkers, and wow future employers. You will be in the top 10% of JavaScript Programmers by the end of this course.</mutableString>
+                                                <string key="text">This course is unlike any JavaScript course you will find online. After many years of working with the language, Andrei has taken decades of experience, combining best practices from some of the top developers in the world, to get you to become one of the top performing Javascript developers. You will go from understanding the basics of JavaScript, to learning it to the point that you can teach it to others, impress coworkers, and wow future employers. You will be in the top 10% of JavaScript Programmers by the end of this course.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -470,24 +470,6 @@ Memory Leaks</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2qf-N4-xUz">
-                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bookmarkCell" rowHeight="155" id="6WJ-HE-9tc">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="155"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6WJ-HE-9tc" id="T0W-R5-11f" customClass="BookmarkTableViewCell" customModule="LangMaster" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="GCb-tW-sVB" id="M2u-sp-ZUw"/>
-                                    <outlet property="delegate" destination="GCb-tW-sVB" id="Cpb-Dg-yDx"/>
-                                </connections>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Dk-cx-C99">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <constraints>
@@ -503,22 +485,121 @@ Memory Leaks</string>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WR5-Ex-RDp">
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="Vfj-Um-8tj"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bookmarkCell" rowHeight="100" id="KBg-2v-yHl" customClass="BookmarkTableViewCell" customModule="LangMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" tableViewCell="KBg-2v-yHl" id="5cR-K9-K43">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWo-zv-tkH" userLabel="ViewCourse">
+                                                    <rect key="frame" x="8" y="11" width="359" height="78"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOh-V0-bmL" userLabel="ViewLogo">
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="78"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LhA-1c-uGr">
+                                                                    <rect key="frame" x="-2" y="0.0" width="94" height="78"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <viewLayoutGuide key="safeArea" id="HaB-C6-n0e"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTi-5p-50r" userLabel="ViewBrief">
+                                                            <rect key="frame" x="90" y="0.0" width="269" height="78"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFj-FY-9Zj">
+                                                                    <rect key="frame" x="8" y="0.0" width="253" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-pw-V9e">
+                                                                    <rect key="frame" x="8" y="57" width="253" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SP-fC-Iv3">
+                                                                    <rect key="frame" x="8" y="28.5" width="253" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="J9v-pw-V9e" firstAttribute="leading" secondItem="wTi-5p-50r" secondAttribute="leading" constant="8" id="G10-dc-TF6"/>
+                                                                <constraint firstAttribute="bottom" secondItem="J9v-pw-V9e" secondAttribute="bottom" constant="8" id="IRg-qa-Zhc"/>
+                                                                <constraint firstItem="pFj-FY-9Zj" firstAttribute="leading" secondItem="wTi-5p-50r" secondAttribute="leading" constant="8" id="N2d-uu-cws"/>
+                                                                <constraint firstAttribute="trailing" secondItem="5SP-fC-Iv3" secondAttribute="trailing" constant="8" id="Sdw-N7-xk2"/>
+                                                                <constraint firstItem="pFj-FY-9Zj" firstAttribute="top" secondItem="wTi-5p-50r" secondAttribute="top" constant="8" id="UMl-yW-JnU"/>
+                                                                <constraint firstItem="5SP-fC-Iv3" firstAttribute="top" secondItem="pFj-FY-9Zj" secondAttribute="bottom" constant="8" id="VEo-4p-24F"/>
+                                                                <constraint firstItem="5SP-fC-Iv3" firstAttribute="leading" secondItem="wTi-5p-50r" secondAttribute="leading" constant="8" id="auS-kU-1NQ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="J9v-pw-V9e" secondAttribute="trailing" constant="8" id="bof-Gf-bmv"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pFj-FY-9Zj" secondAttribute="trailing" constant="8" id="kIQ-CN-d7u"/>
+                                                                <constraint firstItem="J9v-pw-V9e" firstAttribute="top" secondItem="5SP-fC-Iv3" secondAttribute="bottom" constant="8" id="lWV-tt-V9f"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="wTi-5p-50r" secondAttribute="bottom" id="7Nd-rX-NYE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wTi-5p-50r" secondAttribute="trailing" id="GVW-9V-rmk"/>
+                                                        <constraint firstItem="wTi-5p-50r" firstAttribute="leading" secondItem="oOh-V0-bmL" secondAttribute="trailing" id="Hew-4Y-YUa"/>
+                                                        <constraint firstItem="wTi-5p-50r" firstAttribute="top" secondItem="vWo-zv-tkH" secondAttribute="top" id="Q0q-lP-8B5"/>
+                                                        <constraint firstItem="oOh-V0-bmL" firstAttribute="leading" secondItem="vWo-zv-tkH" secondAttribute="leading" id="Q5u-zJ-94p"/>
+                                                        <constraint firstItem="oOh-V0-bmL" firstAttribute="top" secondItem="vWo-zv-tkH" secondAttribute="top" id="Uzd-o6-77q"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oOh-V0-bmL" secondAttribute="bottom" id="ZyY-Zj-udF"/>
+                                                        <constraint firstItem="oOh-V0-bmL" firstAttribute="width" secondItem="vWo-zv-tkH" secondAttribute="width" multiplier="1/4" id="wh6-lX-Xt7"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vWo-zv-tkH" firstAttribute="top" secondItem="5cR-K9-K43" secondAttribute="topMargin" id="ADL-Ng-fYX"/>
+                                                <constraint firstItem="vWo-zv-tkH" firstAttribute="leading" secondItem="RDj-em-Enq" secondAttribute="leading" constant="8" id="NOy-8D-gqL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vWo-zv-tkH" secondAttribute="bottom" id="sJq-8g-0SF"/>
+                                                <constraint firstItem="RDj-em-Enq" firstAttribute="trailing" secondItem="vWo-zv-tkH" secondAttribute="trailing" constant="8" id="xco-gZ-TV7"/>
+                                            </constraints>
+                                            <viewLayoutGuide key="safeArea" id="RDj-em-Enq"/>
+                                        </tableViewCellContentView>
+                                        <viewLayoutGuide key="safeArea" id="cGc-HL-Vhd"/>
+                                        <connections>
+                                            <outlet property="courseAuthorLabel" destination="J9v-pw-V9e" id="NoO-GA-11s"/>
+                                            <outlet property="courseDescriptionLabel" destination="5SP-fC-Iv3" id="g0V-H6-Ljs"/>
+                                            <outlet property="courseImageView" destination="LhA-1c-uGr" id="vim-kN-TVT"/>
+                                            <outlet property="courseTitleLabel" destination="pFj-FY-9Zj" id="qdO-AF-8XC"/>
+                                            <outlet property="courseView" destination="vWo-zv-tkH" id="2Dd-Gi-Cdj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GCb-tW-sVB" id="NBd-Z2-n7V"/>
+                                    <outlet property="delegate" destination="GCb-tW-sVB" id="10N-rZ-ble"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WR5-Ex-RDp" firstAttribute="top" secondItem="2Dk-cx-C99" secondAttribute="bottom" id="Kfo-JP-sdB"/>
                             <constraint firstItem="2Dk-cx-C99" firstAttribute="top" secondItem="20u-ax-r2p" secondAttribute="top" id="N4f-KO-joF"/>
-                            <constraint firstItem="20u-ax-r2p" firstAttribute="trailing" secondItem="2qf-N4-xUz" secondAttribute="trailing" id="Zd8-MA-txx"/>
-                            <constraint firstItem="2qf-N4-xUz" firstAttribute="top" secondItem="2Dk-cx-C99" secondAttribute="bottom" id="Zlj-jL-q73"/>
+                            <constraint firstItem="20u-ax-r2p" firstAttribute="bottom" secondItem="WR5-Ex-RDp" secondAttribute="bottom" id="ZWm-NN-SL4"/>
                             <constraint firstItem="2Dk-cx-C99" firstAttribute="trailing" secondItem="20u-ax-r2p" secondAttribute="trailing" id="dds-4X-vjS"/>
-                            <constraint firstItem="2qf-N4-xUz" firstAttribute="leading" secondItem="20u-ax-r2p" secondAttribute="leading" id="fVe-U2-soc"/>
                             <constraint firstItem="2Dk-cx-C99" firstAttribute="leading" secondItem="20u-ax-r2p" secondAttribute="leading" id="hRF-mN-ndV"/>
-                            <constraint firstItem="20u-ax-r2p" firstAttribute="bottom" secondItem="2qf-N4-xUz" secondAttribute="bottom" id="tIb-vI-bAx"/>
+                            <constraint firstItem="WR5-Ex-RDp" firstAttribute="leading" secondItem="20u-ax-r2p" secondAttribute="leading" id="jSN-hn-YFX"/>
+                            <constraint firstItem="20u-ax-r2p" firstAttribute="trailing" secondItem="WR5-Ex-RDp" secondAttribute="trailing" id="jji-om-sIj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="20u-ax-r2p"/>
                     </view>
                     <navigationItem key="navigationItem" id="gGZ-oT-olO"/>
                     <connections>
-                        <outlet property="bookmarkTableView" destination="2qf-N4-xUz" id="L1K-lv-Niv"/>
+                        <outlet property="bookmarkTableView" destination="WR5-Ex-RDp" id="8rc-0c-6m4"/>
                         <outlet property="editButton" destination="uQy-Iv-uxE" id="edz-6c-vEc"/>
                         <outlet property="navigationBar" destination="s3G-cy-UW0" id="SRe-Xl-Oo3"/>
                         <segue destination="fKL-bb-FMJ" kind="show" identifier="bookmarkToWeb" id="aLv-OJ-09S"/>
@@ -526,7 +607,7 @@ Memory Leaks</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1E6-oR-ojR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="778"/>
+            <point key="canvasLocation" x="896.79999999999995" y="777.66116941529242"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="c9b-nq-Kwo">

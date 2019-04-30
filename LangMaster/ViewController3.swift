@@ -57,7 +57,9 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
         headerLabel.text = "Language Portfolio"
         headerLabel.textAlignment = .center
         //layout.itemSize = CGSize(width: (self.langCollectionView.frame.size.width - 20)/2, height: (self.langCollectionView.frame.size.height)/3)
-        getJSONData()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.getJSONData()
+        }
     }
     
     func getJSONData(){

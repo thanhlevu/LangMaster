@@ -10,6 +10,14 @@ import UIKit
 
 class BookmarkTableViewCell: UITableViewCell {
 
+    @IBOutlet var courseImageView: UIImageView!
+    @IBOutlet var courseTitleLabel: UILabel!
+    @IBOutlet var courseDescriptionLabel: UILabel!
+    @IBOutlet var courseView: UIView!
+    
+    @IBOutlet var courseAuthorLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

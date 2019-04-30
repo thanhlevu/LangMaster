@@ -11,7 +11,9 @@ import UIKit
 class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var navigationBar: UINavigationItem!
+
     @IBOutlet var bookmarkTableView: UITableView!
+    
     
     @IBOutlet var editButton: UIBarButtonItem!
     
@@ -21,10 +23,21 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(bookmarkCourses[indexPath.item].title)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell")
-        cell?.textLabel?.text = bookmarkCourses[indexPath.item].title
-        cell?.backgroundColor = cellBackgroundColor(cellIndex: indexPath.row, numberOfElements: bookmarkCourses.count)
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell", for: indexPath) as! BookmarkTableViewCell
+        let url = NSURL(string: bookmarkCourses[indexPath.item].linkToImage)
+        if let data = NSData(contentsOf: url! as URL) {
+            print(bookmarkCourses.count)
+            cell.courseImageView.contentMode = UIView.ContentMode.scaleAspectFit
+            cell.courseImageView.image = UIImage(data: data as Data)
+            cell.courseTitleLabel.text = bookmarkCourses[indexPath.item].title
+            cell.courseDescriptionLabel.text = bookmarkCourses[indexPath.item].description
+            cell.courseAuthorLabel.text = bookmarkCourses[indexPath.item].author + " | " + bookmarkCourses[indexPath.item].updateTime
+            cell.courseView.backgroundColor = cellBackgroundColor(cellIndex: indexPath.row, numberOfElements: bookmarkCourses.count)
+            cell.courseView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            cell.courseView.layer.borderWidth = 0.5
+            cell.courseView.layer.cornerRadius = 12
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -37,11 +50,9 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
         bookmarkCourses.remove(at: sourceIndexPath.row)
         bookmarkCourseIdArray.insert(idItem, at: destinationIndexPath.row)
         bookmarkCourses.insert(courseItem, at: destinationIndexPath.row)
+        tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(bookmarkCourseIdArray[indexPath.row])
-        print(bookmarkCourses[indexPath.row])
-        
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = cellBackgroundColor(cellIndex: indexPath.row, numberOfElements: bookmarkCourses.count)
         
@@ -74,7 +85,7 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    var bookmarkCourseIdArray = [1,2,3,4,5,6,7,8]
+    var bookmarkCourseIdArray = [1,2,3,4,5,6]
     var bookmarkCourses: [Courses] = []
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,14 +94,16 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
         let userC = User();
         userC.setBookmarkArray([1])
         userC.setBookmarkArray(userC.bookmarkArray()+[2])
-        print(userC.bookmarkArray())
+        //print(userC.bookmarkArray())
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getJSONData()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.getJSONData()
+        }
         // Do any additional setup after loading the view.
     }
     func getJSONData(){
@@ -106,13 +119,15 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
                 DispatchQueue.main.async {
                     self.bookmarkTableView.reloadData()
                 }
-                print(self.bookmarkCourses.count)
+                print("???",self.bookmarkCourses[0])
             }
             catch {
                 print(error)
             }
             }.resume()
     }
+    
+    
     func cellBackgroundColor( cellIndex: Int, numberOfElements: Int) -> UIColor {
         switch cellIndex + 1 {
         case 0...numberOfElements/3:

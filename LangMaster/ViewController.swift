@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let userC = User();
         userC.setBookmarkArray([1])
         userC.setBookmarkArray(userC.bookmarkArray()+[2])
-        print(userC.bookmarkArray())
+        //print(userC.bookmarkArray())
 
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -88,7 +88,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tabBarController?.tabBar.items?[1].badgeValue = "5"
         self.hideKeyboardWhenTappedAround()          // hide the keyboard when tapping around
         self.tabBarController?.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.7422073287, green: 0.4305739439, blue: 0.009549473904, alpha: 1)
-        getJSONData()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.getJSONData()
+        }
 //        searchBar.barTintColor = UIColor.clear
 //        searchBar.backgroundColor = UIColor.clear
         searchBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
