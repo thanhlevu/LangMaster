@@ -85,7 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.tabBarController?.tabBar.items?[1].badgeValue = "5"
+        //self.tabBarController?.tabBar.items?[1].badgeValue = "5"
         self.hideKeyboardWhenTappedAround()          // hide the keyboard when tapping around
         self.tabBarController?.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.7422073287, green: 0.4305739439, blue: 0.009549473904, alpha: 1)
         DispatchQueue.global(qos: .userInteractive).async {
