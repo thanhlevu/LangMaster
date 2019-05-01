@@ -17,13 +17,13 @@ class CourseBriefViewController: UIViewController {
     
 
     @IBAction func goToWeb(_ sender: Any) {
-        performSegue(withIdentifier: "BriefToWeb", sender: "")
+        performSegue(withIdentifier: "ProfileToStudyPath", sender: "")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let svc = segue.destination as? WebPageViewController
-        svc?.courseBrief = courseBrief
+        //let svc = segue.destination as? SkillViewController
+        //svc?.courseBrief = courseBrief
     }
     
     @objc func tapBookMarkButton(){

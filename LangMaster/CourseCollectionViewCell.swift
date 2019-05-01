@@ -15,9 +15,5 @@ class CourseCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var ratingView: CosmosView!
     @IBOutlet var priceLable: UILabel!
-    
-    
-    
-    
-    
+
 }

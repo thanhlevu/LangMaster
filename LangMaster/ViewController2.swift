@@ -68,7 +68,6 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
     {
         let svc = segue.destination as? WebPageViewController
         svc?.courseBrief = selectedCourse
-        
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -123,8 +122,8 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
                 let database = try JSONDecoder().decode(Database.self, from: data!)
                 self.bookmarkCourses = (database.courseLevels.basicCourses + database.courseLevels.advancedCourses + database.courseLevels.frameworkCourses).filter {self.bookmarkCourseIdArray.contains($0.id)}
                 DispatchQueue.main.async {
-                    self.tabBarController?.tabBar.items?[1].badgeValue = String(self.bookmarkCourses.count)
                     self.bookmarkTableView.reloadData()
+                    
                 }
             }
             catch {
@@ -135,10 +134,11 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func cellBackgroundColor( cellIndex: Int, numberOfElements: Int) -> UIColor {
-        switch Double(cellIndex + 1)/Double(numberOfElements) {
-        case 0...(1/3):
+        self.tabBarController?.tabBar.items?[1].badgeValue = String(self.bookmarkCourses.count)
+        switch Double(cellIndex)/Double(numberOfElements) {
+        case 0..<1/3:
             return #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
-        case (1/3)...(2/3):
+        case (1/3)..<(2/3):
             return #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         default:
             return #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)

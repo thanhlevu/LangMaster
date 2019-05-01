@@ -2,4 +2,99 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LangMaster/CourseLevelTableViewCell.swift"
+            timestampString = "578433006.27993"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "CourseLevelTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangMaster.CourseLevelTableViewCell.__allocating_init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; LangMaster.CourseLevelTableViewCell"
+                  moduleName = "LangMaster"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thath/Desktop/LangMaster/LangMaster/CourseLevelTableViewCell.swift"
+                  timestampString = "578433006.406195"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangMaster.CourseLevelTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; LangMaster.CourseLevelTableViewCell"
+                  moduleName = "LangMaster"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thath/Desktop/LangMaster/LangMaster/CourseLevelTableViewCell.swift"
+                  timestampString = "578433006.407889"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangMaster.CourseLevelTableViewCell.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;LangMaster.CourseLevelTableViewCell&gt;"
+                  moduleName = "LangMaster"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thath/Desktop/LangMaster/LangMaster/CourseLevelTableViewCell.swift"
+                  timestampString = "578433006.4094239"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangMaster.CourseLevelTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;LangMaster.CourseLevelTableViewCell&gt;"
+                  moduleName = "LangMaster"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thath/Desktop/LangMaster/LangMaster/CourseLevelTableViewCell.swift"
+                  timestampString = "578433006.411023"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangMaster.CourseLevelTableViewCell.__deallocating_deinit"
+                  moduleName = "LangMaster"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thath/Desktop/LangMaster/LangMaster/CourseLevelTableViewCell.swift"
+                  timestampString = "578433006.412558"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

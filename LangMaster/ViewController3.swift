@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet var headerLabel: UILabel!
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return langLogo.count
     }
@@ -19,10 +17,12 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "langCell", for: indexPath) as! LangCollectionViewCell
         cell.langLogoImageView.image = UIImage(named: langLogo[indexPath.item].logo)
-        cell.langLogoImageView.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        cell.layer.cornerRadius = 10 //set corner radius here
+        //cell.langLogoImageView.image.
+        cell.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        cell.layer.cornerRadius = 60 //set corner radius here
         cell.layer.borderColor = UIColor.black.cgColor  // set cell border color here
         cell.layer.borderWidth = 2 // set border width here
+        cell.alpha = 0.5
         return cell
     }
     
@@ -32,10 +32,12 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
         cell?.layer.borderWidth = 5
         cell?.animateBorderWidth(toValue: 1, duration: 0.3)
         cell?.animateBorderWidth(toValue: 5, duration: 0.3)
-
+        cell?.alpha = 1
+        performSegue(withIdentifier: "ProfileToStudyPath", sender: "")
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.black.cgColor
         cell?.layer.borderWidth = 2
@@ -44,19 +46,21 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
         cell?.alpha = 0.5
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        //let svc = segue.destination as? SkillViewController
+        //svc?.courseBrief = courseBrief
+    }
+    
     @IBOutlet var langCollectionView: UICollectionView!
     var langLogo: [LangLogo] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         let layout = self.langCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 0,right: 10)
-        //layout.minimumLineSpacing = 20
-        headerLabel.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        headerLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
-        headerLabel.text = "Language Portfolio"
-        headerLabel.textAlignment = .center
-        //layout.itemSize = CGSize(width: (self.langCollectionView.frame.size.width - 20)/2, height: (self.langCollectionView.frame.size.height)/3)
         DispatchQueue.global(qos: .userInteractive).async {
             self.getJSONData()
         }
@@ -79,6 +83,7 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
             }.resume()
     }
 }
+
 extension UIView {
     func animateBorderWidth(toValue: CGFloat, duration: Double) {
         let animation:CABasicAnimation = CABasicAnimation(keyPath: "borderWidth")
