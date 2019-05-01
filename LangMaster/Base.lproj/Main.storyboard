@@ -672,7 +672,6 @@ Memory Leaks</string>
         <!--Study Path Animation View Controller-->
         <scene sceneID="ZJb-pa-qBj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RLz-Fo-ZXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="y7Y-P0-9uA" customClass="StudyPathAnimationViewController" customModule="LangMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFy-ds-Y5f" customClass="Sty">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -693,6 +692,7 @@ Memory Leaks</string>
                         <viewLayoutGuide key="safeArea" id="9yb-Fj-NQr"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RLz-Fo-ZXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1929" y="2556"/>
         </scene>
@@ -851,6 +851,6 @@ Memory Leaks</string>
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aLv-OJ-09S"/>
+        <segue reference="VxC-jX-l5U"/>
     </inferredMetricsTieBreakers>
 </document>

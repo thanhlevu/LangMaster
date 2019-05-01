@@ -17,13 +17,13 @@ class CourseBriefViewController: UIViewController {
     
 
     @IBAction func goToWeb(_ sender: Any) {
-        performSegue(withIdentifier: "ProfileToStudyPath", sender: "")
+        performSegue(withIdentifier: "BriefToWeb", sender: "")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        //let svc = segue.destination as? SkillViewController
-        //svc?.courseBrief = courseBrief
+        let svc = segue.destination as? WebPageViewController
+        svc?.courseBrief = courseBrief
     }
     
     @objc func tapBookMarkButton(){
@@ -48,12 +48,16 @@ class CourseBriefViewController: UIViewController {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
-    @IBOutlet var starLable: UILabel!
+
+    @IBOutlet var starLabel: UILabel!
+    
     @IBOutlet var enrolledLabel: UILabel!
     @IBOutlet var ratingLabel: UILabel!
+    
     @IBOutlet var hourLabel: UILabel!
     @IBOutlet var publishTimeLable: UILabel!
-    @IBOutlet var authorLabel: UILabel!         // the connection will unvalid if change the name E.g: authorLabel ==> anyName
+    
+    @IBOutlet var authorLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var originPriceLabel: UILabel!
     
@@ -67,19 +71,19 @@ class CourseBriefViewController: UIViewController {
         
         self.title = courseBrief?.name.capitalized
         titleLabel.text = courseBrief.title
-
+        
         titleLabel.font = UIFont.boldSystemFont(ofSize: 28.0)
         subtitleLabel.text = courseBrief?.subtitle ?? ""
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         ratingLabel.setTextWithIconImage(image: UIImage(named: "Ratings")!, with: courseBrief.ratings)
-        starLable.setTextWithIconImage(image: UIImage(named: "Star")!, with: courseBrief.stars)
+        starLabel.setTextWithIconImage(image: UIImage(named: "Star")!, with: courseBrief.stars)
         priceLabel.setTextWithIconImage(image: UIImage(named: "Price")!, with: "€"+courseBrief.price)
         enrolledLabel.setTextWithIconImage(image: UIImage(named: "EnrolledN")!, with: courseBrief.studentN)
         hourLabel.setTextWithIconImage(image: UIImage(named: "StudyTime")!, with: courseBrief.studyHours)
         publishTimeLable.setTextWithIconImage(image: UIImage(named: "UpdateTime")!, with: courseBrief.updateTime)
         authorLabel.setTextWithIconImage(image: UIImage(named: "Author")!, with: "Created by "+courseBrief.author)
         originPriceLabel.setTextWithIconImage(image: UIImage(named: "Price")!, with: "€"+courseBrief.originPrice)
-
+        
         
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: " €"+courseBrief.originPrice+" ")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
@@ -90,11 +94,8 @@ class CourseBriefViewController: UIViewController {
         let bookmarkButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(tapBookMarkButton))
         self.navigationItem.rightBarButtonItem = bookmarkButton
         
-
+        
     }
-    
-
-    
 }
 extension UILabel {
     
