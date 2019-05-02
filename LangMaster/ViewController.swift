@@ -34,13 +34,14 @@ struct CourseLevels: Codable {
     let advancedCourses: [Courses]
     let frameworkCourses: [Courses]
 }
-struct LangLogo: Codable {
+struct Language: Codable {
     let name: String
     let logo: String
+    var frameworks: [String]
 }
 struct Database: Codable {
     let courseLevels: CourseLevels
-    let languages: [LangLogo]
+    let languages: [Language]
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate  {
@@ -180,11 +181,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellY", for: indexPath) as? CourseLevelTableViewCell else {return UITableViewCell()}
-        cell.collectionViewOutlet.tag = indexPath.section ///
-        cell.reloadData()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellY", for: indexPath) as? CourseLevelTableViewCell
+        cell!.collectionViewOutlet.tag = indexPath.section ///
+        cell!.reloadData()
         
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

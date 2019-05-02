@@ -159,7 +159,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="collectionViewOutlet" destination="zDM-t2-dYT" id="uhE-y2-uvq"/>
+                                            <outlet property="collectionViewOutlet" destination="zDM-t2-dYT" id="qtc-wh-oSE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -418,7 +418,7 @@ Memory Leaks</string>
                         <outlet property="priceLabel" destination="KFJ-2K-6Nx" id="0vo-Nf-lyt"/>
                         <outlet property="publishTimeLable" destination="vu1-Zm-3Fx" id="nGy-ra-Cj7"/>
                         <outlet property="ratingLabel" destination="bOj-u0-H4x" id="gYl-wu-tS6"/>
-                        <outlet property="starLable" destination="5ZK-xa-ZgX" id="Vbg-WC-Y7e"/>
+                        <outlet property="starLabel" destination="5ZK-xa-ZgX" id="UyZ-sc-vzx"/>
                         <outlet property="subtitleLabel" destination="RzX-QV-DRL" id="PF9-eD-2Wk"/>
                         <outlet property="titleLabel" destination="JA1-LR-H2q" id="hhf-eU-9CP"/>
                         <segue destination="fKL-bb-FMJ" kind="show" identifier="BriefToWeb" id="VxC-jX-l5U"/>
@@ -474,51 +474,67 @@ Memory Leaks</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="68" id="iXS-zj-qNx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checklistSkill" rowHeight="68" id="iXS-zj-qNx" customClass="CheckSkillTableViewCell" customModule="LangMaster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iXS-zj-qNx" id="Ymm-1t-aRM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-it-eSK">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-it-eSK">
                                                     <rect key="frame" x="16" y="8" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="4UH-o2-L4f"/>
-                                                        <constraint firstAttribute="height" constant="40" id="iPB-ju-row"/>
+                                                        <constraint firstAttribute="width" constant="40" id="EnV-ei-KLu"/>
+                                                        <constraint firstAttribute="height" constant="40" id="iP3-gL-xnl"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" image="Search"/>
+                                                    <connections>
+                                                        <action selector="searchButtonClicked:" destination="iXS-zj-qNx" eventType="touchUpInside" id="Pgj-Hi-fzW"/>
+                                                    </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEG-io-Bzt">
-                                                    <rect key="frame" x="64" y="8" width="235" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="31U-Lq-36G"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Javascript" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEG-io-Bzt">
+                                                    <rect key="frame" x="64" y="8" width="247" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lw-ca-krE">
-                                                    <rect key="frame" x="114" y="8" width="245" height="40"/>
-                                                    <state key="normal" title="Button"/>
+                                                    <rect key="frame" x="319" y="8" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="LUR-6c-7E4"/>
+                                                        <constraint firstAttribute="height" constant="40" id="gse-jM-F7B"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="UnCheckbox"/>
                                                     <state key="selected" image="UnCheckbox"/>
+                                                    <connections>
+                                                        <action selector="checkboxClicked:" destination="iXS-zj-qNx" eventType="touchUpInside" id="HS5-Sf-mLz"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1lw-ca-krE" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="Dmq-aY-74Y"/>
-                                                <constraint firstItem="ZEG-io-Bzt" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="ElO-12-33b"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZEG-io-Bzt" secondAttribute="bottom" constant="8" id="Rb3-T4-lct"/>
-                                                <constraint firstItem="ZEG-io-Bzt" firstAttribute="leading" secondItem="KlW-it-eSK" secondAttribute="trailing" constant="8" id="Sdk-SA-1cT"/>
-                                                <constraint firstItem="1lw-ca-krE" firstAttribute="leading" secondItem="ZEG-io-Bzt" secondAttribute="trailing" constant="8" id="aSr-pb-tsW"/>
-                                                <constraint firstAttribute="bottom" secondItem="KlW-it-eSK" secondAttribute="bottom" constant="8" id="duW-In-dqV"/>
-                                                <constraint firstItem="KlW-it-eSK" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="egp-8u-qql"/>
-                                                <constraint firstItem="KlW-it-eSK" firstAttribute="leading" secondItem="Ymm-1t-aRM" secondAttribute="leading" constant="16" id="fBg-da-laF"/>
-                                                <constraint firstAttribute="bottom" secondItem="1lw-ca-krE" secondAttribute="bottom" constant="8" id="ua9-NC-jut"/>
-                                                <constraint firstAttribute="trailing" secondItem="1lw-ca-krE" secondAttribute="trailing" constant="16" id="zS7-sW-RkM"/>
+                                                <constraint firstItem="ZEG-io-Bzt" firstAttribute="leading" secondItem="KlW-it-eSK" secondAttribute="trailing" constant="8" id="7Sc-CV-a8P"/>
+                                                <constraint firstItem="1lw-ca-krE" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="8V7-ks-TZv"/>
+                                                <constraint firstItem="1lw-ca-krE" firstAttribute="leading" secondItem="ZEG-io-Bzt" secondAttribute="trailing" constant="8" id="CTt-om-pMb"/>
+                                                <constraint firstAttribute="bottom" secondItem="1lw-ca-krE" secondAttribute="bottom" constant="8" id="Leh-rC-anr"/>
+                                                <constraint firstAttribute="bottom" secondItem="KlW-it-eSK" secondAttribute="bottom" constant="8" id="NCe-fx-KI6"/>
+                                                <constraint firstItem="KlW-it-eSK" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="Qbb-ux-FYP"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZEG-io-Bzt" secondAttribute="bottom" constant="8" id="XOp-Mh-17O"/>
+                                                <constraint firstItem="KlW-it-eSK" firstAttribute="leading" secondItem="Ymm-1t-aRM" secondAttribute="leading" constant="16" id="ofI-DA-8Zc"/>
+                                                <constraint firstItem="ZEG-io-Bzt" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="qca-WP-gK1"/>
+                                                <constraint firstAttribute="trailing" secondItem="1lw-ca-krE" secondAttribute="trailing" constant="16" id="vO2-3t-NiN"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkBoxLabel" destination="1lw-ca-krE" id="IAp-iw-A2M"/>
+                                            <outlet property="languageLevelLabel" destination="ZEG-io-Bzt" id="b1x-OD-uxg"/>
+                                            <outlet property="searchButton" destination="KlW-it-eSK" id="bMY-o1-fcO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8CU-Ol-pe7" id="Yf2-Yu-jLg"/>
+                                    <outlet property="delegate" destination="8CU-Ol-pe7" id="jgC-E5-G8m"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -756,7 +772,7 @@ Memory Leaks</string>
                     <navigationItem key="navigationItem" title="Language Portfolio" id="VdL-dw-N6t"/>
                     <connections>
                         <outlet property="langCollectionView" destination="acI-A4-Gyu" id="mEh-8U-g73"/>
-                        <segue destination="8CU-Ol-pe7" kind="show" identifier="ProfileTo" id="9Zf-Y9-Pmh"/>
+                        <segue destination="8CU-Ol-pe7" kind="show" identifier="ProfileToChecklistSkill" id="9Zf-Y9-Pmh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hF-Hf-hc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -780,7 +796,7 @@ Memory Leaks</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QiH-0v-Pl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="-1043"/>
+            <point key="canvasLocation" x="897" y="-1046"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iFL-kd-zUg">
@@ -848,6 +864,7 @@ Memory Leaks</string>
     <resources>
         <image name="GoldStar" width="53" height="51"/>
         <image name="GoldStarEmpty" width="53" height="51"/>
+        <image name="Search" width="75" height="75"/>
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>

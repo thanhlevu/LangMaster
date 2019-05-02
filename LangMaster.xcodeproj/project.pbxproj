@@ -24,6 +24,7 @@
 		0A51E5C6227A2EB7006F0C42 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E5B7227A2EB7006F0C42 /* CosmosRating.swift */; };
 		0A51E5C7227A2EB7006F0C42 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E5B8227A2EB7006F0C42 /* CosmosSettings.swift */; };
 		0A51E5C8227A2EB7006F0C42 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E5B9227A2EB7006F0C42 /* CosmosView.swift */; };
+		0A51E5D0227AAAA3006F0C42 /* CheckSkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E5CF227AAAA3006F0C42 /* CheckSkillTableViewCell.swift */; };
 		0A7EF380226B1B5B009FA453 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF37F226B1B5B009FA453 /* CourseCollectionViewCell.swift */; };
 		0A7EF382226B1B80009FA453 /* CourseLevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF381226B1B80009FA453 /* CourseLevelTableViewCell.swift */; };
 		0A7EF384226B3053009FA453 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF383226B3053009FA453 /* ViewController2.swift */; };
@@ -79,6 +80,7 @@
 		0A51E5B7227A2EB7006F0C42 /* CosmosRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosRating.swift; sourceTree = "<group>"; };
 		0A51E5B8227A2EB7006F0C42 /* CosmosSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosSettings.swift; sourceTree = "<group>"; };
 		0A51E5B9227A2EB7006F0C42 /* CosmosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosView.swift; sourceTree = "<group>"; };
+		0A51E5CF227AAAA3006F0C42 /* CheckSkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSkillTableViewCell.swift; sourceTree = "<group>"; };
 		0A7EF37F226B1B5B009FA453 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A7EF381226B1B80009FA453 /* CourseLevelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseLevelTableViewCell.swift; sourceTree = "<group>"; };
 		0A7EF383226B3053009FA453 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				0A7EF3D52276DAB0009FA453 /* BookmarkTableViewCell.swift */,
 				0A51E40E227A0B28006F0C42 /* SkillViewController.swift */,
 				0A51E40C2278EF85006F0C42 /* StudyPathAnimationViewController.swift */,
+				0A51E5CF227AAAA3006F0C42 /* CheckSkillTableViewCell.swift */,
 			);
 			path = LangMaster;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				0A51E40D2278EF85006F0C42 /* StudyPathAnimationViewController.swift in Sources */,
 				0A51E5C4227A2EB7006F0C42 /* CosmosLayerHelper.swift in Sources */,
 				0A7EF380226B1B5B009FA453 /* CourseCollectionViewCell.swift in Sources */,
+				0A51E5D0227AAAA3006F0C42 /* CheckSkillTableViewCell.swift in Sources */,
 				0A51E5BD227A2EB7006F0C42 /* CosmosText.swift in Sources */,
 				0A7EF382226B1B80009FA453 /* CourseLevelTableViewCell.swift in Sources */,
 				0A7EF384226B3053009FA453 /* ViewController2.swift in Sources */,

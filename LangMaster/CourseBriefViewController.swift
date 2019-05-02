@@ -48,7 +48,6 @@ class CourseBriefViewController: UIViewController {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
-
     @IBOutlet var starLabel: UILabel!
     
     @IBOutlet var enrolledLabel: UILabel!

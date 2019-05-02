@@ -9,8 +9,9 @@
 import UIKit
 
 class CourseLevelTableViewCell: UITableViewCell {
-
+    
     @IBOutlet var collectionViewOutlet: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
