@@ -9,41 +9,6 @@
 
 import UIKit
 
-struct Courses: Codable {
-    let id: Int
-    let name: String
-    let no: String
-    let title: String
-    let subtitle: String
-    let linkToWeb: String
-    let linkToImage: String
-    let requirements: [String]
-    let stars: String
-    let ratings: String
-    let price: String
-    let originPrice: String
-    let whatToLearn: String
-    let description: String
-    let studentN: String
-    let author: String
-    let studyHours: String
-    let updateTime:String
-}
-struct CourseLevels: Codable {
-    let basicCourses: [Courses]
-    let advancedCourses: [Courses]
-    let frameworkCourses: [Courses]
-}
-struct Language: Codable {
-    let name: String
-    let logo: String
-    var frameworks: [String]
-}
-struct Database: Codable {
-    let courseLevels: CourseLevels
-    let languages: [Language]
-}
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate  {
     
     var screenSize: CGRect!
@@ -89,22 +54,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //self.tabBarController?.tabBar.items?[1].badgeValue = "5"
         self.hideKeyboardWhenTappedAround()          // hide the keyboard when tapping around
         self.tabBarController?.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.7422073287, green: 0.4305739439, blue: 0.009549473904, alpha: 1)
+        
         DispatchQueue.global(qos: .userInteractive).async {
-            self.getJSONData()
+            let dataFetcher = DataFetcher()
+            dataFetcher.getJSONData(databaseCompletionHandler: {jsonData, error in
+                if let jsonData = jsonData {
+                    self.courseDatabase = jsonData
+                    self.basicCourseArr = self.courseDatabase.courseLevels.basicCourses
+                    self.advancedCourseArr = self.courseDatabase.courseLevels.advancedCourses
+                    self.frameworkCourseArr = self.courseDatabase.courseLevels.frameworkCourses
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        print("courseDatabase", self.courseDatabase)
+                    }
+                }
+            })
         }
-//        searchBar.barTintColor = UIColor.clear
-//        searchBar.backgroundColor = UIColor.clear
         searchBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-//        searchBar.isTranslucent = true
-//        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-//        UITabBar.appearance().barTintColor = UIColor.orange                 // not working if using navigation bar
-//        UITabBar.appearance().tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)          // not working if using navigation bar
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.orange
-    
     }
 
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
             isSearching = false
@@ -128,6 +98,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 
     var courseDatabase:Database!
+    
     func getJSONData(){
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -136,7 +107,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let jsonDataURL = URL(string: "http://bit.ly/2XDl5T8") else {return}   // JSON data API
         session.dataTask(with: jsonDataURL) {(data, response, error) in
             do {
-                
                 let database = try JSONDecoder().decode(Database.self, from: data!)
                 self.courseDatabase = database
                 self.basicCourseArr = database.courseLevels.basicCourses
@@ -173,7 +143,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return 1
             }
         }
-       // return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -210,6 +179,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 }
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func setupCell(cell: CourseCollectionViewCell, courseArr: [Courses], index: Int) {
+        let url = NSURL(string: courseArr[index].linkToImage)
+        if let data = NSData(contentsOf: url! as URL) {
+            cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
+            cell.imageView.image = UIImage(data: data as Data)
+            cell.titleLable.text = courseArr[index].title
+            cell.priceLable.text = "€ "+courseArr[index].price
+            cell.ratingView.rating = Double(courseArr[index].ratings) ?? 1.0
+            cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isSearching {
             if collectionView.tag == 0 {
@@ -236,78 +216,29 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if isSearching {
             if collectionView.tag == 0 {
                 if !searchBasicCourseArr.isEmpty {
-                    let url = NSURL(string: searchBasicCourseArr[indexPath.item].linkToImage)
-                    if let data = NSData(contentsOf: url! as URL) {
-                        cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
-                        cell.imageView.image = UIImage(data: data as Data)
-                        cell.titleLable.text = searchBasicCourseArr[indexPath.item].title
-                        cell.priceLable.text = "€ "+searchBasicCourseArr[indexPath.item].price
-                        cell.ratingView.rating = Double(searchBasicCourseArr[indexPath.item].ratings) ?? 1.0
-                        cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-                    }
+                    setupCell(cell: cell, courseArr: searchBasicCourseArr, index: indexPath.item)
                 }
             } else if collectionView.tag == 1 {
                 if !searchAdvancedCourseArr.isEmpty {
-                    let url = NSURL(string: searchAdvancedCourseArr[indexPath.item].linkToImage)
-                    if let data = NSData(contentsOf: url! as URL) {
-                        cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
-                        cell.imageView.image = UIImage(data: data as Data)
-                        cell.titleLable.text = searchAdvancedCourseArr[indexPath.item].title
-                        cell.priceLable.text = "€ "+searchAdvancedCourseArr[indexPath.item].price
-                        cell.ratingView.rating = Double(searchAdvancedCourseArr[indexPath.item].ratings) ?? 1.0
-                        cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-                    }
+                    setupCell(cell: cell, courseArr: searchAdvancedCourseArr, index: indexPath.item)
                 }
             } else {
                 if !searchFrameWorkCourseArr.isEmpty {
-                    let url = NSURL(string: searchFrameWorkCourseArr[indexPath.item].linkToImage)
-                    if let data = NSData(contentsOf: url! as URL) {
-                        cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
-                        cell.imageView.image = UIImage(data: data as Data)
-                        cell.titleLable.text = searchFrameWorkCourseArr[indexPath.item].title
-                        cell.priceLable.text = "€ "+searchFrameWorkCourseArr[indexPath.item].price
-                        cell.ratingView.rating = Double(searchFrameWorkCourseArr[indexPath.item].ratings) ?? 1.0
-                        cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-                    }
+                    setupCell(cell: cell, courseArr: searchFrameWorkCourseArr, index: indexPath.item)
                 }
             }
-
         } else {
             if collectionView.tag == 0 {
                 if !basicCourseArr.isEmpty {
-                    let url = NSURL(string: basicCourseArr[indexPath.item].linkToImage)
-                    if let data = NSData(contentsOf: url! as URL) {
-                        cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
-                        cell.imageView.image = UIImage(data: data as Data)
-                        cell.titleLable.text = basicCourseArr[indexPath.item].title
-                        cell.priceLable.text = "€ "+basicCourseArr[indexPath.item].price
-                        cell.ratingView.rating = Double(basicCourseArr[indexPath.item].ratings) ?? 1.0
-                        cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-                    }
+                    setupCell(cell: cell, courseArr: basicCourseArr, index: indexPath.item)
                 }
             } else if collectionView.tag == 1 {
                 if !advancedCourseArr.isEmpty {
-                    let url = NSURL(string: advancedCourseArr[indexPath.item].linkToImage)
-                    if let data = NSData(contentsOf: url! as URL) {
-                        cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
-                        cell.imageView.image = UIImage(data: data as Data)
-                        cell.titleLable.text = advancedCourseArr[indexPath.item].title
-                        cell.priceLable.text = "€ "+advancedCourseArr[indexPath.item].price
-                        cell.ratingView.rating = Double(advancedCourseArr[indexPath.item].ratings) ?? 1.0
-                        cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-                    }
+                    setupCell(cell: cell, courseArr: advancedCourseArr, index: indexPath.item)
                 }
             } else {
                 if !frameworkCourseArr.isEmpty {
-                    let url = NSURL(string: frameworkCourseArr[indexPath.item].linkToImage)
-                    if let data = NSData(contentsOf: url! as URL) {
-                        cell.imageView.contentMode = UIView.ContentMode.scaleAspectFit
-                        cell.imageView.image = UIImage(data: data as Data)
-                        cell.titleLable.text = frameworkCourseArr[indexPath.item].title
-                        cell.priceLable.text = "€ "+frameworkCourseArr[indexPath.item].price
-                        cell.ratingView.rating = Double(frameworkCourseArr[indexPath.item].ratings) ?? 1.0
-                        cell.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-                    }
+                    setupCell(cell: cell, courseArr: frameworkCourseArr, index: indexPath.item)
                 }
             }
         }
@@ -360,6 +291,4 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-
 }

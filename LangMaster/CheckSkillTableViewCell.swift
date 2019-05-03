@@ -12,6 +12,7 @@ class CheckSkillTableViewCell: UITableViewCell {
     @IBOutlet var languageLevelLabel: UILabel!
     @IBOutlet var checkBoxLabel: UIButton!
     @IBOutlet var searchButton: UIButton!
+    @IBOutlet var courseView: UIView!
     
     @IBAction func checkboxClicked(_ sender: Any) {
 //        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {

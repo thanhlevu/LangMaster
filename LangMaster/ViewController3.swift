@@ -65,24 +65,16 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
         let layout = self.langCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 0,right: 10)
         DispatchQueue.global(qos: .userInteractive).async {
-            self.getJSONData()
-        }
-    }
-    
-    func getJSONData(){
-        guard let jsonDataURL = URL(string: "http://bit.ly/2XDl5T8") else {return}   // JSON data API
-        URLSession.shared.dataTask(with: jsonDataURL) {(data, response, error) in
-            do {
-                let database = try JSONDecoder().decode(Database.self, from: data!)
-                self.languageArr = database.languages
-                DispatchQueue.main.async {
-                    self.langCollectionView.reloadData()
+            let dataFetcher = DataFetcher()
+            dataFetcher.getJSONData(databaseCompletionHandler: {jsonData, error in
+                if let jsonData = jsonData {
+                    self.languageArr = jsonData.languages
+                    DispatchQueue.main.async {
+                        self.langCollectionView.reloadData()
+                    }
                 }
-            }
-            catch {
-                print(error)
-            }
-            }.resume()
+            })
+        }
     }
 }
 

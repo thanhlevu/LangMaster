@@ -474,58 +474,74 @@ Memory Leaks</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checklistSkill" rowHeight="68" id="iXS-zj-qNx" customClass="CheckSkillTableViewCell" customModule="LangMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="68"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checklistSkill" rowHeight="120" id="iXS-zj-qNx" customClass="CheckSkillTableViewCell" customModule="LangMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iXS-zj-qNx" id="Ymm-1t-aRM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-it-eSK">
-                                                    <rect key="frame" x="16" y="8" width="40" height="40"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZi-2d-W8e">
+                                                    <rect key="frame" x="16" y="16" width="343" height="56"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-it-eSK">
+                                                            <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="5Uo-mN-3JS"/>
+                                                                <constraint firstAttribute="width" constant="40" id="jXf-62-QSW"/>
+                                                            </constraints>
+                                                            <state key="normal" image="Search"/>
+                                                            <connections>
+                                                                <action selector="searchButtonClicked:" destination="iXS-zj-qNx" eventType="touchUpInside" id="Pgj-Hi-fzW"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lw-ca-krE">
+                                                            <rect key="frame" x="295" y="8" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="SzC-C5-lJa"/>
+                                                                <constraint firstAttribute="height" constant="40" id="XYJ-zH-C3q"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="UnCheckbox"/>
+                                                            <state key="selected" image="UnCheckbox"/>
+                                                            <connections>
+                                                                <action selector="checkboxClicked:" destination="iXS-zj-qNx" eventType="touchUpInside" id="HS5-Sf-mLz"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Javascript" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEG-io-Bzt">
+                                                            <rect key="frame" x="56" y="8" width="231" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="EZf-Jp-WPt"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="EnV-ei-KLu"/>
-                                                        <constraint firstAttribute="height" constant="40" id="iP3-gL-xnl"/>
+                                                        <constraint firstItem="1lw-ca-krE" firstAttribute="top" secondItem="mZi-2d-W8e" secondAttribute="top" constant="8" id="4dZ-sX-uUL"/>
+                                                        <constraint firstItem="ZEG-io-Bzt" firstAttribute="top" secondItem="mZi-2d-W8e" secondAttribute="top" constant="8" id="Q6r-Ov-55B"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KlW-it-eSK" secondAttribute="bottom" constant="8" id="Sb6-m5-Pv4"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1lw-ca-krE" secondAttribute="bottom" constant="8" id="VBz-RL-0Iu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ZEG-io-Bzt" secondAttribute="bottom" constant="8" id="h2K-6G-fcF"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1lw-ca-krE" secondAttribute="trailing" constant="8" id="jhd-o8-hgr"/>
+                                                        <constraint firstItem="KlW-it-eSK" firstAttribute="top" secondItem="mZi-2d-W8e" secondAttribute="top" constant="8" id="jrG-b3-XHN"/>
+                                                        <constraint firstItem="1lw-ca-krE" firstAttribute="leading" secondItem="ZEG-io-Bzt" secondAttribute="trailing" constant="8" id="lTB-FR-9HY"/>
+                                                        <constraint firstItem="KlW-it-eSK" firstAttribute="leading" secondItem="mZi-2d-W8e" secondAttribute="leading" constant="8" id="u8I-BG-adg"/>
+                                                        <constraint firstItem="ZEG-io-Bzt" firstAttribute="leading" secondItem="KlW-it-eSK" secondAttribute="trailing" constant="8" id="wDU-06-wQh"/>
                                                     </constraints>
-                                                    <state key="normal" image="Search"/>
-                                                    <connections>
-                                                        <action selector="searchButtonClicked:" destination="iXS-zj-qNx" eventType="touchUpInside" id="Pgj-Hi-fzW"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Javascript" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEG-io-Bzt">
-                                                    <rect key="frame" x="64" y="8" width="247" height="40"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lw-ca-krE">
-                                                    <rect key="frame" x="319" y="8" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="LUR-6c-7E4"/>
-                                                        <constraint firstAttribute="height" constant="40" id="gse-jM-F7B"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="UnCheckbox"/>
-                                                    <state key="selected" image="UnCheckbox"/>
-                                                    <connections>
-                                                        <action selector="checkboxClicked:" destination="iXS-zj-qNx" eventType="touchUpInside" id="HS5-Sf-mLz"/>
-                                                    </connections>
-                                                </button>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZEG-io-Bzt" firstAttribute="leading" secondItem="KlW-it-eSK" secondAttribute="trailing" constant="8" id="7Sc-CV-a8P"/>
-                                                <constraint firstItem="1lw-ca-krE" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="8V7-ks-TZv"/>
-                                                <constraint firstItem="1lw-ca-krE" firstAttribute="leading" secondItem="ZEG-io-Bzt" secondAttribute="trailing" constant="8" id="CTt-om-pMb"/>
-                                                <constraint firstAttribute="bottom" secondItem="1lw-ca-krE" secondAttribute="bottom" constant="8" id="Leh-rC-anr"/>
-                                                <constraint firstAttribute="bottom" secondItem="KlW-it-eSK" secondAttribute="bottom" constant="8" id="NCe-fx-KI6"/>
-                                                <constraint firstItem="KlW-it-eSK" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="Qbb-ux-FYP"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZEG-io-Bzt" secondAttribute="bottom" constant="8" id="XOp-Mh-17O"/>
-                                                <constraint firstItem="KlW-it-eSK" firstAttribute="leading" secondItem="Ymm-1t-aRM" secondAttribute="leading" constant="16" id="ofI-DA-8Zc"/>
-                                                <constraint firstItem="ZEG-io-Bzt" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="8" id="qca-WP-gK1"/>
-                                                <constraint firstAttribute="trailing" secondItem="1lw-ca-krE" secondAttribute="trailing" constant="16" id="vO2-3t-NiN"/>
+                                                <constraint firstItem="mZi-2d-W8e" firstAttribute="top" secondItem="Ymm-1t-aRM" secondAttribute="top" constant="16" id="AGD-Dm-ci6"/>
+                                                <constraint firstItem="mZi-2d-W8e" firstAttribute="leading" secondItem="Ymm-1t-aRM" secondAttribute="leading" constant="16" id="Kug-U4-XIh"/>
+                                                <constraint firstAttribute="bottom" secondItem="mZi-2d-W8e" secondAttribute="bottom" id="NEb-X9-Z3c"/>
+                                                <constraint firstAttribute="trailing" secondItem="mZi-2d-W8e" secondAttribute="trailing" constant="16" id="vom-HB-Qld"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkBoxLabel" destination="1lw-ca-krE" id="IAp-iw-A2M"/>
+                                            <outlet property="courseView" destination="mZi-2d-W8e" id="iUj-Dr-KHC"/>
                                             <outlet property="languageLevelLabel" destination="ZEG-io-Bzt" id="b1x-OD-uxg"/>
                                             <outlet property="searchButton" destination="KlW-it-eSK" id="bMY-o1-fcO"/>
                                         </connections>
@@ -546,6 +562,9 @@ Memory Leaks</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ruS-i7-9tq"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="elV-h1-P0Q" id="t89-ZB-FPz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHS-sE-2P3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -868,6 +887,6 @@ Memory Leaks</string>
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VxC-jX-l5U"/>
+        <segue reference="aLv-OJ-09S"/>
     </inferredMetricsTieBreakers>
 </document>

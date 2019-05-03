@@ -108,30 +108,18 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         DispatchQueue.global(qos: .userInteractive).async {
-            self.getJSONData()
-        }
-    }
-    func getJSONData(){
-        let config = URLSessionConfiguration.default
-        config.requestCachePolicy = .reloadIgnoringLocalCacheData
-        config.urlCache = nil
-        let session = URLSession.init(configuration: config)
-        guard let jsonDataURL = URL(string: "http://bit.ly/2XDl5T8") else {return}   // JSON data API
-        session.dataTask(with: jsonDataURL) {(data, response, error) in
-            do {
-                let database = try JSONDecoder().decode(Database.self, from: data!)
-                self.bookmarkCourses = (database.courseLevels.basicCourses + database.courseLevels.advancedCourses + database.courseLevels.frameworkCourses).filter {self.bookmarkCourseIdArray.contains($0.id)}
-                DispatchQueue.main.async {
-                    self.bookmarkTableView.reloadData()
-                    
+            let dataFetcher = DataFetcher()
+            dataFetcher.getJSONData(databaseCompletionHandler: {jsonData, error in
+                if let jsonData = jsonData {
+                    self.bookmarkCourses = (jsonData.courseLevels.basicCourses + jsonData.courseLevels.advancedCourses + jsonData.courseLevels.frameworkCourses).filter {self.bookmarkCourseIdArray.contains($0.id)}
+                    DispatchQueue.main.async {
+                        self.bookmarkTableView.reloadData()
+                        
+                    }
                 }
-            }
-            catch {
-                print(error)
-            }
-            }.resume()
-    }
-    
+            })
+        }
+    }    
     
     func cellBackgroundColor( cellIndex: Int, numberOfElements: Int) -> UIColor {
         self.tabBarController?.tabBar.items?[1].badgeValue = String(self.bookmarkCourses.count)

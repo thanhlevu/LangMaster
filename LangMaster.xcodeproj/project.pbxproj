@@ -42,6 +42,7 @@
 		0AC4D22E226989C00033308F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4D22C226989C00033308F /* LaunchScreen.storyboard */; };
 		0AC4D239226989C00033308F /* LangMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D238226989C00033308F /* LangMasterTests.swift */; };
 		0AC4D244226989C00033308F /* LangMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D243226989C00033308F /* LangMasterUITests.swift */; };
+		0AD5A2CE227BD94F00C5264E /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5A2CD227BD94F00C5264E /* DataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		0AC4D23F226989C00033308F /* LangMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LangMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC4D243226989C00033308F /* LangMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangMasterUITests.swift; sourceTree = "<group>"; };
 		0AC4D245226989C00033308F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AD5A2CD227BD94F00C5264E /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 		0AC4D214226989BE0033308F = {
 			isa = PBXGroup;
 			children = (
+				0AD5A2CD227BD94F00C5264E /* DataFetcher.swift */,
 				0AC4D21F226989BF0033308F /* LangMaster */,
 				0AC4D237226989C00033308F /* LangMasterTests */,
 				0AC4D242226989C00033308F /* LangMasterUITests */,
@@ -360,6 +363,7 @@
 				0A51E5C2227A2EB7006F0C42 /* CosmosLayers.swift in Sources */,
 				0A7EF3C7226F93F2009FA453 /* ViewController3.swift in Sources */,
 				0A7EF3D62276DAB0009FA453 /* BookmarkTableViewCell.swift in Sources */,
+				0AD5A2CE227BD94F00C5264E /* DataFetcher.swift in Sources */,
 				0A51E5C8227A2EB7006F0C42 /* CosmosView.swift in Sources */,
 				0A51E5BF227A2EB7006F0C42 /* CosmosTouchTarget.swift in Sources */,
 				0A51E5BC227A2EB7006F0C42 /* CosmosAccessibility.swift in Sources */,
