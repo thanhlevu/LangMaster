@@ -484,12 +484,13 @@ Memory Leaks</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZi-2d-W8e">
                                                     <rect key="frame" x="16" y="16" width="343" height="56"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-it-eSK">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-it-eSK">
                                                             <rect key="frame" x="8" y="8" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="5Uo-mN-3JS"/>
                                                                 <constraint firstAttribute="width" constant="40" id="jXf-62-QSW"/>
                                                             </constraints>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" image="Search"/>
                                                             <connections>
                                                                 <action selector="searchButtonClicked:" destination="iXS-zj-qNx" eventType="touchUpInside" id="Qto-t7-ddG"/>

@@ -25,11 +25,13 @@ class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return language?.frameworks.count ?? 1
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistSkill", for: indexPath) as! CheckSkillTableViewCell
-        cell.languageLevelLabel.text = language?.frameworks[indexPath.row].capitalized ?? "Nil"
+        cell.languageLevelLabel.text = language?.frameworks[indexPath.row] ?? "Nil"
         cell.courseView.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        
+        cell.languageLevelLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        cell.languageLevelLabel.textColor = .white
         //cell.courseView.setGradientBackground(colorTop: #colorLiteral(red: 0.6076138648, green: 1, blue: 0.4611086114, alpha: 1), colorBottom: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1))
         cell.courseView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         cell.courseView.layer.borderWidth = 0.5
@@ -43,16 +45,18 @@ class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDat
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         selectedCellIndex = indexPath.row
         self.tabBarController?.selectedIndex = 0
-        //performSegue(withIdentifier: "SkillToHome", sender: "")
+        let tabBar = tabBarController as! BaseTabBarController
+        switch language?.frameworks[selectedCellIndex].lowercased() {
+        case "basic":
+            tabBar.searchingKeyword = language!.name + "-1"
+        case "advanced":
+            tabBar.searchingKeyword = language!.name + "-2"
+        default:
+            tabBar.searchingKeyword = language!.frameworks[selectedCellIndex].lowercased()
+        }
     }
+    
     var selectedCellIndex = 0
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        let svc = segue.destination as? ViewController
-        print(selectedCellIndex)
-        //svc?.searchBar.text = language?.frameworks[selectedCellIndex]
-    }
-
     
     func checkBoxTapped(cell: CheckSkillTableViewCell, sender: UIButton) {
         guard self.tableView.indexPath(for: cell) != nil else { return }
@@ -81,8 +85,8 @@ extension UIView {
     func setGradientBackground(colorTop: UIColor, colorBottom: UIColor){
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop.cgColor, colorBottom.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.startPoint = CGPoint(x: 0, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.0)
         gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
         gradientLayer.frame = self.bounds
         self.layer.insertSublayer(gradientLayer, at: 0)

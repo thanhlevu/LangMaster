@@ -103,7 +103,7 @@ class StudyPathAnimationViewController: UIViewController, URLSessionDownloadDele
         shapeLayer.strokeEnd = 0
         let configuration = URLSessionConfiguration.default
         let operationQueue = OperationQueue()
-        let urlSession = URLSession(configuration: configuration, delegate: self as? URLSessionDelegate, delegateQueue: operationQueue)
+        let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
         guard let url = URL(string: urlString) else { return }
         let downloadTask = urlSession.downloadTask(with: url)
         downloadTask.resume()

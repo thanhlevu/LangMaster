@@ -10,6 +10,7 @@ import UIKit
 
 class BaseTabBarController: UITabBarController {
 
+    var searchingKeyword: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 

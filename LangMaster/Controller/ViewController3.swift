@@ -17,23 +17,24 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "langCell", for: indexPath) as! LangCollectionViewCell
         cell.langLogoImageView.image = UIImage(named: languageArr[indexPath.item].logo)
+        cell.langLogoImageView.setImageColor(color: .white)
         //cell.langLogoImageView.image.
         cell.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         cell.layer.cornerRadius = 60 //set corner radius here
-        cell.layer.borderColor = UIColor.black.cgColor  // set cell border color here
-        cell.layer.borderWidth = 2 // set border width here
-        cell.alpha = 0.5
+        cell.layer.borderColor = UIColor.lightGray.cgColor  // set cell border color here
+        cell.layer.borderWidth = 1 // set border width here
+        cell.alpha = 1
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedLanguage = languageArr[indexPath.row]
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = UIColor.red.cgColor
-        cell?.layer.borderWidth = 5
-        cell?.animateBorderWidth(toValue: 1, duration: 0.3)
-        cell?.animateBorderWidth(toValue: 5, duration: 0.3)
-        cell?.alpha = 1
+//        let cell = collectionView.cellForItem(at: indexPath)
+//        cell?.layer.borderColor = UIColor.red.cgColor
+//        cell?.layer.borderWidth = 12
+//        cell?.animateBorderWidth(toValue: 1, duration: 0.3)
+//        cell?.animateBorderWidth(toValue: 5, duration: 0.3)
+//        cell?.alpha = 1
         performSegue(withIdentifier: "ProfileToChecklistSkill", sender: "")
     }
     
@@ -45,12 +46,12 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
     
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = UIColor.black.cgColor
-        cell?.layer.borderWidth = 2
-        cell?.animateBorderWidth(toValue: 0, duration: 0.3)
-        cell?.animateBorderWidth(toValue: 2, duration: 0.3)
-        cell?.alpha = 0.5
+//        let cell = collectionView.cellForItem(at: indexPath)
+//        cell?.layer.borderColor = UIColor.lightGray.cgColor
+//        cell?.layer.borderWidth = 1
+//        cell?.animateBorderWidth(toValue: 0, duration: 0.3)
+//        cell?.animateBorderWidth(toValue: 2, duration: 0.3)
+//        cell?.alpha = 1
     }
     var selectedLanguage: Language!
 
@@ -89,5 +90,12 @@ extension UIView {
     func blink() {
         self.alpha = 0.2
         UIView.animate(withDuration: 1, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.alpha = 1.0}, completion: nil)
+    }
+}
+extension UIImageView {
+    func setImageColor(color: UIColor) {
+        let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+        self.image = templateImage
+        self.tintColor = color
     }
 }

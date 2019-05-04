@@ -9,7 +9,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate  {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+
+    
     
     var screenSize: CGRect!
     var screenWidth: CGFloat!
@@ -31,6 +33,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var selectedCourse:Courses!
     
     override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            let dataFetcher = DataFetcher()
+            dataFetcher.getJSONData(databaseCompletionHandler: {jsonData, error in
+                if let jsonData = jsonData {
+                    self.courseDatabase = jsonData
+                    self.basicCourseArr = self.courseDatabase.courseLevels.basicCourses
+                    self.advancedCourseArr = self.courseDatabase.courseLevels.advancedCourses
+                    self.frameworkCourseArr = self.courseDatabase.courseLevels.frameworkCourses
+                    DispatchQueue.main.async {
+                        let tabBar = self.tabBarController as! BaseTabBarController
+                        self.searchBar.text = tabBar.searchingKeyword
+                        self.searchBar(self.searchBar, textDidChange: tabBar.searchingKeyword)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            })
+        }
+        
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
         let userC = User();
@@ -51,38 +73,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.searchBar.delegate = self
         //self.tabBarController?.tabBar.items?[1].badgeValue = "5"
         self.hideKeyboardWhenTappedAround()          // hide the keyboard when tapping around
         self.tabBarController?.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.7422073287, green: 0.4305739439, blue: 0.009549473904, alpha: 1)
         
-        DispatchQueue.global(qos: .userInteractive).async {
-            let dataFetcher = DataFetcher()
-            dataFetcher.getJSONData(databaseCompletionHandler: {jsonData, error in
-                if let jsonData = jsonData {
-                    self.courseDatabase = jsonData
-                    self.basicCourseArr = self.courseDatabase.courseLevels.basicCourses
-                    self.advancedCourseArr = self.courseDatabase.courseLevels.advancedCourses
-                    self.frameworkCourseArr = self.courseDatabase.courseLevels.frameworkCourses
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-            })
-        }
+
         searchBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
 
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == nil || searchBar.text == "" {
+        if searchText == "" {
             isSearching = false
             tableView.reloadData()
         } else {
             isSearching = true
-            searchBasicCourseArr = basicCourseArr.filter { $0.title.lowercased().contains((searchBar.text!.lowercased())) || $0.no.lowercased().contains((searchBar.text!.lowercased())) || $0.name.lowercased().contains((searchBar.text!.lowercased())) }
-            searchAdvancedCourseArr = advancedCourseArr.filter { $0.title.lowercased().contains((searchBar.text!.lowercased())) || $0.no.lowercased().contains((searchBar.text!.lowercased())) || $0.name.lowercased().contains((searchBar.text!.lowercased())) }
-            searchFrameWorkCourseArr = frameworkCourseArr.filter { $0.title.lowercased().contains((searchBar.text!.lowercased())) || $0.no.lowercased().contains((searchBar.text!.lowercased())) || $0.name.lowercased().contains((searchBar.text!.lowercased())) }
+            searchBasicCourseArr = basicCourseArr.filter { $0.title.lowercased().contains((searchText.lowercased())) || $0.no.lowercased().contains((searchText.lowercased())) || $0.name.lowercased().contains((searchText.lowercased())) }
+            searchAdvancedCourseArr = advancedCourseArr.filter { $0.title.lowercased().contains((searchText.lowercased())) || $0.no.lowercased().contains((searchText.lowercased())) || $0.name.lowercased().contains((searchText.lowercased())) }
+            searchFrameWorkCourseArr = frameworkCourseArr.filter { $0.title.lowercased().contains((searchText.lowercased())) || $0.no.lowercased().contains((searchText.lowercased())) || $0.name.lowercased().contains((searchText.lowercased())) }
             self.tableView.reloadData()
         }
     }
@@ -291,3 +307,5 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
