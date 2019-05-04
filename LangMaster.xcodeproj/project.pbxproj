@@ -35,6 +35,7 @@
 		0A7EF3D42275D620009FA453 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3D32275D620009FA453 /* User.m */; };
 		0A7EF3D62276DAB0009FA453 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EF3D52276DAB0009FA453 /* BookmarkTableViewCell.swift */; };
 		0A94A8E1227D7BA300FE7823 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A94A8E0227D7BA300FE7823 /* BaseTabBarController.swift */; };
+		0A94A8E6227D83A400FE7823 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A94A8E5227D83A400FE7823 /* Database.swift */; };
 		0AC4D221226989BF0033308F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D220226989BF0033308F /* AppDelegate.swift */; };
 		0AC4D223226989BF0033308F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4D222226989BF0033308F /* ViewController.swift */; };
 		0AC4D226226989BF0033308F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4D224226989BF0033308F /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		0A7EF3D32275D620009FA453 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0A7EF3D52276DAB0009FA453 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		0A94A8E0227D7BA300FE7823 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		0A94A8E5227D83A400FE7823 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		0AC4D21D226989BF0033308F /* LangMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LangMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC4D220226989BF0033308F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC4D222226989BF0033308F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,9 +170,8 @@
 				0AD5A2CD227BD94F00C5264E /* DataFetcher.swift */,
 				0A7EF3D22275D620009FA453 /* User.h */,
 				0A7EF3D32275D620009FA453 /* User.m */,
-				0A7EF3D12275D61F009FA453 /* LangMaster-Bridging-Header.h */,
-				0AC4D22F226989C00033308F /* Info.plist */,
 				0AC4D22A226989C00033308F /* Assets.xcassets */,
+				0A94A8E5227D83A400FE7823 /* Database.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +231,8 @@
 				0A94A8E2227D7EE000FE7823 /* Model */,
 				0AC4D224226989BF0033308F /* Main.storyboard */,
 				0AC4D22C226989C00033308F /* LaunchScreen.storyboard */,
+				0A7EF3D12275D61F009FA453 /* LangMaster-Bridging-Header.h */,
+				0AC4D22F226989C00033308F /* Info.plist */,
 				0AC4D227226989BF0033308F /* LangMaster.xcdatamodeld */,
 			);
 			path = LangMaster;
@@ -397,6 +400,7 @@
 				0A51E5BC227A2EB7006F0C42 /* CosmosAccessibility.swift in Sources */,
 				0AC4D223226989BF0033308F /* ViewController.swift in Sources */,
 				0A7EF3D02274BC22009FA453 /* WebPageViewController.swift in Sources */,
+				0A94A8E6227D83A400FE7823 /* Database.swift in Sources */,
 				0AC4D229226989BF0033308F /* LangMaster.xcdatamodeld in Sources */,
 				0AC4D221226989BF0033308F /* AppDelegate.swift in Sources */,
 				0A7EF3C9226FA1F8009FA453 /* LangCollectionViewCell.swift in Sources */,
