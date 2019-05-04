@@ -28,11 +28,18 @@ class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistSkill", for: indexPath) as! CheckSkillTableViewCell
-        cell.languageLevelLabel.text = language?.frameworks[indexPath.row] ?? "Nil"
-        cell.courseView.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        cell.languageLevelLabel.text = language!.frameworks[indexPath.row]
         cell.languageLevelLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
         cell.languageLevelLabel.textColor = .white
         //cell.courseView.setGradientBackground(colorTop: #colorLiteral(red: 0.6076138648, green: 1, blue: 0.4611086114, alpha: 1), colorBottom: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1))
+        switch language?.frameworks[indexPath.row].lowercased() {
+        case "basic":
+            cell.courseView.layer.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        case "advanced":
+            cell.courseView.layer.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        default:
+            cell.courseView.layer.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        }
         cell.courseView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         cell.courseView.layer.borderWidth = 0.5
         cell.courseView.layer.cornerRadius = 12

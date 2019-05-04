@@ -21,8 +21,13 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
         //cell.langLogoImageView.image.
         cell.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         cell.layer.cornerRadius = 60 //set corner radius here
-        cell.layer.borderColor = UIColor.lightGray.cgColor  // set cell border color here
-        cell.layer.borderWidth = 1 // set border width here
+        cell.layer.shadowRadius = 10
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOpacity = 0.7
+        cell.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell.layer.shadowColor = UIColor.orange.cgColor
+//        cell.layer.borderColor = UIColor.lightGray.cgColor  // set cell border color here
+//        cell.layer.borderWidth = 10 // set border width here
         cell.alpha = 1
         return cell
     }

@@ -31,10 +31,19 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.courseView.backgroundColor = cellBackgroundColor(cellIndex: indexPath.row, numberOfElements: bookmarkCourses.count)
             cell.selectionStyle = .none
             cell.courseView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            cell.courseView.layer.borderWidth = 0.5
+            cell.courseView.layer.borderWidth = 1
             cell.courseView.layer.cornerRadius = 12
         }
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
+    {
+        if !bookmarkTableView.isEditing {
+            return UITableViewCell.EditingStyle.none
+        } else {
+            return UITableViewCell.EditingStyle.delete
+        }
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
