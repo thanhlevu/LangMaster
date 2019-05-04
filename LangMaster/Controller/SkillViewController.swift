@@ -41,9 +41,17 @@ class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func searchButtonTapped(cell: CheckSkillTableViewCell, sender: UIButton) {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
-        print("Button tapped 1111on row \(indexPath.row)")
+        selectedCellIndex = indexPath.row
+        self.tabBarController?.selectedIndex = 0
+        //performSegue(withIdentifier: "SkillToHome", sender: "")
     }
-    
+    var selectedCellIndex = 0
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let svc = segue.destination as? ViewController
+        print(selectedCellIndex)
+        //svc?.searchBar.text = language?.frameworks[selectedCellIndex]
+    }
 
     
     func checkBoxTapped(cell: CheckSkillTableViewCell, sender: UIButton) {

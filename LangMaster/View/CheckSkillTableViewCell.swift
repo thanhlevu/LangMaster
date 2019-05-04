@@ -24,6 +24,7 @@ class CheckSkillTableViewCell: UITableViewCell {
     @IBAction func searchButtonClicked(_ sender: Any) {
         self.delegate?.searchButtonTapped(cell: self, sender: sender as! UIButton)
     }
+    
     @IBAction func checkBoxClicked(_ sender: Any) {
         self.delegate?.checkBoxTapped(cell: self, sender: sender as! UIButton)
     }

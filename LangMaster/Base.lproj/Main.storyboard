@@ -564,6 +564,7 @@ Memory Leaks</string>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="elV-h1-P0Q" id="t89-ZB-FPz"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="SkillToHome" id="EUz-1e-M8P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHS-sE-2P3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -798,10 +799,10 @@ Memory Leaks</string>
             </objects>
             <point key="canvasLocation" x="1928.8" y="777.66116941529242"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Base Tab Bar Controller-->
         <scene sceneID="Hs2-F6-yvt">
             <objects>
-                <tabBarController id="QS3-za-eDI" sceneMemberID="viewController">
+                <tabBarController id="QS3-za-eDI" customClass="BaseTabBarController" customModule="LangMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="spD-wR-q62">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -887,5 +888,6 @@ Memory Leaks</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aLv-OJ-09S"/>
+        <segue reference="EUz-1e-M8P"/>
     </inferredMetricsTieBreakers>
 </document>
