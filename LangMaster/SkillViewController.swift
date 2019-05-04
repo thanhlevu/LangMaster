@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileCellSubclassDelegate {
+ 
     @IBOutlet var tableView: UITableView!
     var language: Language?
     override func viewDidLoad() {
@@ -19,6 +19,8 @@ class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
     
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return language?.frameworks.count ?? 1
     }
@@ -26,11 +28,34 @@ class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistSkill", for: indexPath) as! CheckSkillTableViewCell
         cell.languageLevelLabel.text = language?.frameworks[indexPath.row].capitalized ?? "Nil"
-        cell.courseView.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        cell.courseView.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        
+        //cell.courseView.setGradientBackground(colorTop: #colorLiteral(red: 0.6076138648, green: 1, blue: 0.4611086114, alpha: 1), colorBottom: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1))
         cell.courseView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         cell.courseView.layer.borderWidth = 0.5
         cell.courseView.layer.cornerRadius = 12
+        cell.selectionStyle = .none
+        cell.delegate = self
         return cell
+    }
+
+    func searchButtonTapped(cell: CheckSkillTableViewCell, sender: UIButton) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+        print("Button tapped 1111on row \(indexPath.row)")
+    }
+    
+
+    
+    func checkBoxTapped(cell: CheckSkillTableViewCell, sender: UIButton) {
+        guard self.tableView.indexPath(for: cell) != nil else { return }
+        UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCurlDown, animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            sender.isSelected = !sender.isSelected
+        }) { (success) in
+            UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCurlDown, animations: {
+                sender.transform = .identity
+            }, completion: nil)
+        }
     }
     
     /*
@@ -43,4 +68,15 @@ class SkillViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     */
 
+}
+extension UIView {
+    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop.cgColor, colorBottom.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
+        gradientLayer.frame = self.bounds
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
 }

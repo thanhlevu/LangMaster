@@ -10,19 +10,12 @@ import UIKit
 
 class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var navigationBar: UINavigationItem!
-    
     @IBOutlet var bookmarkTableView: UITableView!
-    
     var selectedCourse:Courses!
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookmarkCourses.count
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
     override func viewWillDisappear(_ animated: Bool) {
         bookmarkTableView.reloadData()
     }
@@ -36,6 +29,7 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.courseDescriptionLabel.text = bookmarkCourses[indexPath.item].description
             cell.courseAuthorLabel.text = bookmarkCourses[indexPath.item].author + " | " + bookmarkCourses[indexPath.item].updateTime
             cell.courseView.backgroundColor = cellBackgroundColor(cellIndex: indexPath.row, numberOfElements: bookmarkCourses.count)
+            cell.selectionStyle = .none
             cell.courseView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             cell.courseView.layer.borderWidth = 0.5
             cell.courseView.layer.cornerRadius = 12
@@ -96,6 +90,7 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.bookmarkTableView.separatorStyle = .none
         // Hide the Navigation Bar
         let userC = User();
         userC.setBookmarkArray([1])

@@ -39,7 +39,6 @@ class ViewController3: UIViewController, UICollectionViewDelegate, UICollectionV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("===> selectedLanguage",selectedLanguage)
         let svc = segue.destination as? SkillViewController
         svc?.language = selectedLanguage
     }

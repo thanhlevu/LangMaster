@@ -8,23 +8,31 @@
 
 import UIKit
 
+protocol ProfileCellSubclassDelegate: class {
+    func searchButtonTapped(cell: CheckSkillTableViewCell, sender: UIButton)
+    func checkBoxTapped(cell: CheckSkillTableViewCell, sender: UIButton)
+}
+
 class CheckSkillTableViewCell: UITableViewCell {
     @IBOutlet var languageLevelLabel: UILabel!
     @IBOutlet var checkBoxLabel: UIButton!
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var courseView: UIView!
     
-    @IBAction func checkboxClicked(_ sender: Any) {
-//        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-//            (sender as AnyObject).transform = CGAffineTransform(scaleX:0.1, scaleY:0.1)
-//            (sender as AnyObject).isSelected = !sender.isSelected
-//        }) { (success) in
-//            
-//        }
-    }
+    weak var delegate: ProfileCellSubclassDelegate?
+    
     @IBAction func searchButtonClicked(_ sender: Any) {
-        
+        self.delegate?.searchButtonTapped(cell: self, sender: sender as! UIButton)
     }
+    @IBAction func checkBoxClicked(_ sender: Any) {
+        self.delegate?.checkBoxTapped(cell: self, sender: sender as! UIButton)
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.delegate = nil
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,5 +43,13 @@ class CheckSkillTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    private lazy var gradient: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.darkGray.cgColor, UIColor.orange.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        gradientLayer.frame = self.bounds
+        return gradientLayer
+    }()
 
 }

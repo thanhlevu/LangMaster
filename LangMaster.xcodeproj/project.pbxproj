@@ -202,8 +202,8 @@
 				0A7EF3D12275D61F009FA453 /* LangMaster-Bridging-Header.h */,
 				0A7EF3D52276DAB0009FA453 /* BookmarkTableViewCell.swift */,
 				0A51E40E227A0B28006F0C42 /* SkillViewController.swift */,
-				0A51E40C2278EF85006F0C42 /* StudyPathAnimationViewController.swift */,
 				0A51E5CF227AAAA3006F0C42 /* CheckSkillTableViewCell.swift */,
+				0A51E40C2278EF85006F0C42 /* StudyPathAnimationViewController.swift */,
 			);
 			path = LangMaster;
 			sourceTree = "<group>";

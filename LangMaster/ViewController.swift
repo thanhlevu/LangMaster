@@ -65,14 +65,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.frameworkCourseArr = self.courseDatabase.courseLevels.frameworkCourses
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
-                        print("courseDatabase", self.courseDatabase)
                     }
                 }
             })
         }
         searchBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         self.tabBarController?.tabBar.tintColor = UIColor.white
-        self.tabBarController?.tabBar.barTintColor = UIColor.orange
+        self.tabBarController?.tabBar.barTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
